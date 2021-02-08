@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   left: size / 3,
                   child: Text(
                     StringConst.FOOD_FOR_EVERYONE,
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                 ),
                 Positioned(

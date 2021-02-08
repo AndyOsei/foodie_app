@@ -23,81 +23,15 @@ class GetStartedScreen extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: _buildHeader(context),
+                child: _buildHeaderSection(context),
               ),
               Flexible(
                 flex: 5,
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Image.asset(ImagePath.TOY_FACE_BOY),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Image.asset(ImagePath.TOY_FACE_GIRL),
-                    ),
-                    FractionallySizedBox(
-                      heightFactor: 0.335,
-                      widthFactor: 0.4,
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(255, 71, 11, 0.51),
-                              Color.fromRGBO(255, 71, 11, 1)
-                            ],
-                            transform: GradientRotation(-0.0349),
-                          ),
-                        ),
-                      ),
-                    ),
-                    FractionallySizedBox(
-                      heightFactor: 0.35,
-                      widthFactor: 0.6,
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color.fromRGBO(255, 71, 11, 0.1),
-                              Color.fromRGBO(255, 71, 11, 1)
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                child: _buildContentSection(),
               ),
               Flexible(
                 flex: 1,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
-                    height: Sizes.SIZE_60,
-                    child: TextButton(
-                      onPressed: () {
-                        ExtendedNavigator.root.push(Routes.authScreen);
-                      },
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-                        ),
-                        primary: AppColors.primaryColor,
-                      ),
-                      child: Text(StringConst.GET_STARTED),
-                    ),
-                  ),
-                ),
+                child: _buildButtonSection(context),
               ),
             ],
           ),
@@ -106,7 +40,81 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
-  Container _buildHeader(BuildContext context) {
+  Align _buildButtonSection(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
+        height: Sizes.SIZE_60,
+        child: TextButton(
+          onPressed: () {
+            ExtendedNavigator.root.push(Routes.authScreen);
+          },
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(Sizes.SIZE_30),
+            ),
+            primary: AppColors.primaryColor,
+          ),
+          child: Text(StringConst.GET_STARTED),
+        ),
+      ),
+    );
+  }
+
+  Stack _buildContentSection() {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Image.asset(ImagePath.TOY_FACE_BOY),
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Image.asset(ImagePath.TOY_FACE_GIRL),
+        ),
+        FractionallySizedBox(
+          heightFactor: 0.335,
+          widthFactor: 0.4,
+          alignment: Alignment.bottomRight,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(255, 71, 11, 0.51),
+                  Color.fromRGBO(255, 71, 11, 1)
+                ],
+                transform: GradientRotation(-0.0349),
+              ),
+            ),
+          ),
+        ),
+        FractionallySizedBox(
+          heightFactor: 0.35,
+          widthFactor: 0.6,
+          alignment: Alignment.bottomLeft,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(255, 71, 11, 0.1),
+                  Color.fromRGBO(255, 71, 11, 1)
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container _buildHeaderSection(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
         top: Sizes.SIZE_36,

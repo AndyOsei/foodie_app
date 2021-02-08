@@ -7,6 +7,7 @@ class ImagePath {
   //SplashScreen
   static const BACKGROUND = '$imageDir/bg2.jpg';
   static const LOGO = '$imageDir/logo.png';
+  static const LOGO_2 = '$imageDir/logo2.png';
   static const BELLA_OLONJE_LOGO = '$imageDir/bella_olonje_logo2.png';
   static const TOY_FACE_BOY = '$imageDir/toy_face_boy.png';
   static const TOY_FACE_GIRL = '$imageDir/toy_face_girl.png';

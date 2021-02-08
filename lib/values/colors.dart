@@ -4,6 +4,9 @@ class AppColors {
   static const Color primaryColor = red;
   static const Color accentColor = orange;
 
+  //white
+  static const Color white100 = Color(0xFFF2F2F2);
+
   //Red
   static const Color red = Color(0xFFFF4B3A);
   static const Color red200 = Color(0xFFFA4A0C);
