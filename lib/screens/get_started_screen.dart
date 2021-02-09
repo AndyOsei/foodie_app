@@ -12,8 +12,6 @@ class GetStartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
-        height: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.red,
         ),
@@ -23,15 +21,15 @@ class GetStartedScreen extends StatelessWidget {
             children: [
               Flexible(
                 flex: 3,
-                child: _buildHeaderSection(context),
+                child: _buildHeader(context),
               ),
               Flexible(
                 flex: 5,
-                child: _buildContentSection(),
+                child: _buildContent(),
               ),
               Flexible(
                 flex: 1,
-                child: _buildButtonSection(context),
+                child: _buildButton(context),
               ),
             ],
           ),
@@ -40,30 +38,33 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
-  Align _buildButtonSection(BuildContext context) {
+  Align _buildButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
-        height: Sizes.SIZE_60,
-        child: TextButton(
-          onPressed: () {
-            ExtendedNavigator.root.push(Routes.authScreen);
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Sizes.SIZE_30),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: Sizes.SIZE_8),
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
+          height: Sizes.SIZE_60,
+          child: TextButton(
+            onPressed: () {
+              ExtendedNavigator.root.push(Routes.authScreen);
+            },
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Sizes.SIZE_30),
+              ),
+              primary: AppColors.primaryColor,
             ),
-            primary: AppColors.primaryColor,
+            child: Text(StringConst.GET_STARTED),
           ),
-          child: Text(StringConst.GET_STARTED),
         ),
       ),
     );
   }
 
-  Stack _buildContentSection() {
+  Stack _buildContent() {
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -85,8 +86,8 @@ class GetStartedScreen extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Color.fromRGBO(255, 71, 11, 0.51),
-                  Color.fromRGBO(255, 71, 11, 1)
+                  AppColors.orange51,
+                  AppColors.orange100,
                 ],
                 transform: GradientRotation(-0.0349),
               ),
@@ -114,10 +115,10 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
-  Container _buildHeaderSection(BuildContext context) {
+  Container _buildHeader(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
-        top: Sizes.SIZE_36,
+        top: Sizes.SIZE_20,
         left: Sizes.SIZE_48,
       ),
       child: Column(
@@ -125,26 +126,25 @@ class GetStartedScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            width: Sizes.SIZE_72,
-            height: Sizes.SIZE_72,
+            width: Sizes.SIZE_60,
+            height: Sizes.SIZE_60,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(Sizes.SIZE_72 / 2),
+              borderRadius: BorderRadius.circular(Sizes.SIZE_60 / 2),
             ),
             child: Image.asset(
               ImagePath.LOGO,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: Sizes.SIZE_30),
-            child: Text(
-              StringConst.FOOD_FOR_EVERYONE,
-              style: Theme.of(context).textTheme.headline1.copyWith(
-                    color: Colors.white,
-                    height: 0.8,
-                  ),
-            ),
-          )
+          Spacer(),
+          Text(
+            StringConst.FOOD_FOR_EVERYONE,
+            style: Theme.of(context).textTheme.headline1.copyWith(
+                  color: Colors.white,
+                  height: 0.8,
+                ),
+          ),
+          Spacer(),
         ],
       ),
     );

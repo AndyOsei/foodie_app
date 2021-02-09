@@ -11,16 +11,19 @@ import 'package:flutter/material.dart';
 
 import '../screens/auth_screen.dart';
 import '../screens/get_started_screen.dart';
+import '../screens/home_screen.dart';
 import '../screens/splash_screen.dart';
 
 class Routes {
   static const String splashScreen = '/';
   static const String getStartedScreen = '/get-started-screen';
   static const String authScreen = '/auth-screen';
+  static const String homeScreen = '/home-screen';
   static const all = <String>{
     splashScreen,
     getStartedScreen,
     authScreen,
+    homeScreen,
   };
 }
 
@@ -31,6 +34,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.splashScreen, page: SplashScreen),
     RouteDef(Routes.getStartedScreen, page: GetStartedScreen),
     RouteDef(Routes.authScreen, page: AuthScreen),
+    RouteDef(Routes.homeScreen, page: HomeScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -53,6 +57,12 @@ class AppRouter extends RouterBase {
     AuthScreen: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => AuthScreen(),
+        settings: data,
+      );
+    },
+    HomeScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => HomeScreen(),
         settings: data,
       );
     },
