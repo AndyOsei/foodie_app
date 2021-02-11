@@ -4,6 +4,7 @@ class Sizes {
   static const double HEIGHT_OF_BOTTOM_NAV_BAR = 64.0;
   static const double SAFE_AREA_MARGIN = 24.0;
 
+  static const double SIZE_200 = 200.0;
   static const double SIZE_150 = 150.0;
   static const double SIZE_120 = 120.0;
   static const double SIZE_96 = 96.0;
@@ -11,9 +12,11 @@ class Sizes {
   static const double SIZE_70 = 70.0;
   static const double SIZE_72 = 72.0;
   static const double SIZE_60 = 60.0;
+  static const double SIZE_50 = 50.0;
   static const double SIZE_48 = 48.0;
   static const double SIZE_40 = 40.0;
   static const double SIZE_36 = 36.0;
+  static const double SIZE_34 = 34.0;
   static const double SIZE_32 = 32.0;
   static const double SIZE_30 = 30.0;
   static const double SIZE_24 = 24.0;

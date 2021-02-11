@@ -18,4 +18,16 @@ class StringConst {
   static const String CONFIRM_PASSWORD = 'Confirm Password';
   static const String FORGOT_PASSWORD = 'Forgot Password?';
   static const String AETERISKS = '*';
+
+  // Home
+  static const String DELICIOUS = 'Delicious';
+  static const String FOOD_FOR_YOU = 'food for you';
+  static const String SEARCH = 'Search';
+
+  // Drawer
+  static const String PROFILE = 'Profile';
+  static const String ORDERS = 'Orders';
+  static const String OFFER_AND_PROMO = 'Offer and promo';
+  static const String PRIVACY_POLICY = 'Privacy policy';
+  static const String SECURITY = 'Security';
 }

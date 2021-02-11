@@ -20,8 +20,20 @@ class AppTheme {
 
   static TextTheme _textTheme = TextTheme(
     headline1: TextStyle(
-      fontSize: Sizes.SIZE_60,
+      fontSize: Sizes.TEXT_SIZE_60,
       fontWeight: _heavy,
+    ),
+    headline2: TextStyle(
+      fontSize: Sizes.TEXT_SIZE_34,
+      fontWeight: _heavy,
+    ),
+    headline3: TextStyle(
+      fontSize: Sizes.TEXT_SIZE_17,
+      fontWeight: _heavy,
+    ),
+    headline4: TextStyle(
+      fontSize: Sizes.TEXT_SIZE_22,
+      fontWeight: _semiBold,
     ),
     subtitle1: TextStyle(
       fontSize: Sizes.TEXT_SIZE_18,

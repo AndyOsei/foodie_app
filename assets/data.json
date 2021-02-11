@@ -1,0 +1,70 @@
+{
+  "Foods": [
+    {
+      "name": "Veggie tomato mix",
+      "price": "N1,900",
+      "image": "assets/images/veggie_tomato_mix.png"
+    },
+    {
+      "name": "Kendi fish stew",
+      "price": "N2,300.99",
+      "image": "assets/images/veggie_tomato_mix.png"
+    },
+    {
+      "name": "Rice fish stew",
+      "price": "N2,300.99",
+      "image": "assets/images/veggie_tomato_mix.png"
+    }
+  ],
+  "Drinks": [
+    {
+      "name": "Smirnoff Ice",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Malta Guiness",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Vodka Splash",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    }
+  ],
+  "Snacks": [
+    {
+      "name": "Mima Biscuits",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Cuisess Pie",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Toliv Spread",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    }
+  ],
+  "Sauce": [
+    {
+      "name": "Spicy fish sauce",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Lamba Crab sauce",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    },
+    {
+      "name": "Zapnia sauce",
+      "price": "N2,300.99",
+      "image": "assets/images/spicy_fish_sauce.png"
+    }
+  ]
+}

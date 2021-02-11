@@ -6,3 +6,4 @@ part 'strings.dart';
 part 'images.dart';
 part 'sizes.dart';
 part 'colors.dart';
+part 'shadows.dart';
