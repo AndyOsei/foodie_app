@@ -7,10 +7,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomDrawer(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-        child: HomePage(),
-      ),
+      child: HomePage(),
     );
   }
 }

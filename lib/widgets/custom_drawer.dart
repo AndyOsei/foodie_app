@@ -17,7 +17,7 @@ class CustomDrawer extends StatefulWidget {
 class CustomDrawerState extends State<CustomDrawer>
     with SingleTickerProviderStateMixin {
   static const Duration toggleDuration = Duration(milliseconds: 250);
-  static const double maxSlide = 240;
+  static const double maxSlide = 255;
   static const double minDragStartEdge = 60;
   static const double maxDragStartEdge = maxSlide - 16;
   AnimationController _animationController;
@@ -70,12 +70,30 @@ class CustomDrawerState extends State<CustomDrawer>
                 MyDrawer(),
                 Transform(
                   transform: Matrix4.identity()
+                    ..translate(slideAmount - 20)
+                    ..translate(0.0, 20.0)
+                    ..scale(contentScale, contentScale),
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                      color: AppColors.orange200,
+                    ),
+                  ),
+                ),
+                Transform(
+                  transform: Matrix4.identity()
                     ..translate(slideAmount)
                     ..scale(contentScale, contentScale),
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
                     onTap: _animationController.isCompleted ? close : null,
-                    child: child,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(
+                        _animationController.isCompleted ? Sizes.SIZE_30 : 0,
+                      ),
+                      child: child,
+                    ),
                   ),
                 ),
               ],
