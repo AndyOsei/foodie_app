@@ -33,4 +33,9 @@ class StringConst {
   static const String PRIVACY_POLICY = 'Privacy policy';
   static const String SECURITY = 'Security';
   static const String SIGN_OUT = 'Sign-out';
+
+  static const String SEARCH_HINT = 'Search';
+  static const String ITEM_NOT_FOUND = 'Item not found';
+  static const String ITEM_NOT_FOUND_HINT =
+      'Try searching the item with a different keyword.';
 }

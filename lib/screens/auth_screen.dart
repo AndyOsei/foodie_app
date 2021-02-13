@@ -96,6 +96,7 @@ class AuthScreen extends StatelessWidget {
                 hintStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
                 hintText: StringConst.EMAIL_ADDRESS,
               ),
@@ -108,6 +109,7 @@ class AuthScreen extends StatelessWidget {
                 hintStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
                 hintText: StringConst.PASSWORD,
               ),
@@ -120,6 +122,7 @@ class AuthScreen extends StatelessWidget {
                 style: _textTheme.button.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.red200,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
               ),
             ),
@@ -162,6 +165,7 @@ class AuthScreen extends StatelessWidget {
                 hintStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
                 hintText: StringConst.EMAIL_ADDRESS,
               ),
@@ -174,6 +178,7 @@ class AuthScreen extends StatelessWidget {
                 hintStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
                 hintText: StringConst.PASSWORD,
               ),
@@ -181,11 +186,12 @@ class AuthScreen extends StatelessWidget {
             Spacer(flex: 1),
             TextField(
               obscureText: true,
-              obscuringCharacter: '*',
+              obscuringCharacter: StringConst.AETERISKS,
               decoration: InputDecoration(
                 hintStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
+                  fontSize: Sizes.TEXT_SIZE_15,
                 ),
                 hintText: StringConst.CONFIRM_PASSWORD,
               ),

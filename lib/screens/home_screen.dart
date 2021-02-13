@@ -4,6 +4,7 @@ import 'package:foodie_app/models/dish.dart';
 import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_drawer.dart';
+import 'package:foodie_app/widgets/custom_icon.dart';
 import 'package:foodie_app/widgets/dish_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -189,7 +190,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Row(
             children: [
-              Image.asset(ImagePath.SEARCH_ICON),
+              CustomIcon(name: 'search', width: 24, height: 24),
               Padding(
                 padding: const EdgeInsets.only(left: Sizes.SIZE_16),
                 child: Text(

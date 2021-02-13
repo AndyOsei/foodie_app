@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:foodie_app/values/values.dart';
 
 class CustomIcon extends StatelessWidget {
-  const CustomIcon({Key key, @required this.name, this.color})
-      : super(key: key);
+  const CustomIcon({
+    Key key,
+    @required this.name,
+    this.color,
+    this.width,
+    this.height,
+  }) : super(key: key);
 
   final String name;
   final Color color;
+  final double width;
+  final double height;
 
   static final Map<String, String> icons = {
     "menu": ImagePath.MENU_ICON,
@@ -22,6 +29,12 @@ class CustomIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset('${icons[name]}', color: color);
+    return Image.asset(
+      '${icons[name]}',
+      color: color,
+      width: width,
+      height: height,
+      fit: BoxFit.contain,
+    );
   }
 }
