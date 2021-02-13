@@ -4,13 +4,15 @@ import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 
 class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final TextTheme _textTheme = Theme.of(context).textTheme;
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: AppColors.white100,
+      backgroundColor: AppColors.white200,
       body: SingleChildScrollView(
         child: DefaultTabController(
           length: 2,

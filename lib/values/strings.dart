@@ -1,7 +1,9 @@
 part of values;
 
 class StringConst {
-  static const String APP_NAME = "Foodie";
+  static const String APP_NAME = 'Foodie';
+
+  static const String SF_PRO_ROUNDED = 'SF Pro Rounded';
 
   // Splash
   static const String FOOD_FOR_EVERYONE = 'Food for Everyone';
@@ -30,4 +32,5 @@ class StringConst {
   static const String OFFER_AND_PROMO = 'Offer and promo';
   static const String PRIVACY_POLICY = 'Privacy policy';
   static const String SECURITY = 'Security';
+  static const String SIGN_OUT = 'Sign-out';
 }

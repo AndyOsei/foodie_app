@@ -2,7 +2,7 @@ part of values;
 
 class Shadows {
   static const dishCard = const BoxShadow(
-    color: AppColors.white100,
+    color: AppColors.white200,
     offset: const Offset(0, Sizes.SIZE_30),
     blurRadius: Sizes.SIZE_60,
   );
@@ -14,7 +14,7 @@ class Shadows {
   );
 
   static const container = const BoxShadow(
-    color: AppColors.white100,
+    color: AppColors.white200,
     offset: Offset(0.0, 40.0),
     blurRadius: Sizes.SIZE_40,
   );

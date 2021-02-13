@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import '../screens/auth_screen.dart';
 import '../screens/get_started_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/search_screen.dart';
 import '../screens/splash_screen.dart';
 
 class Routes {
@@ -19,11 +20,13 @@ class Routes {
   static const String getStartedScreen = '/get-started-screen';
   static const String authScreen = '/auth-screen';
   static const String homeScreen = '/home-screen';
+  static const String searchScreen = '/search-screen';
   static const all = <String>{
     splashScreen,
     getStartedScreen,
     authScreen,
     homeScreen,
+    searchScreen,
   };
 }
 
@@ -35,6 +38,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.getStartedScreen, page: GetStartedScreen),
     RouteDef(Routes.authScreen, page: AuthScreen),
     RouteDef(Routes.homeScreen, page: HomeScreen),
+    RouteDef(Routes.searchScreen, page: SearchScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -56,14 +60,22 @@ class AppRouter extends RouterBase {
     },
     AuthScreen: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => AuthScreen(),
+        builder: (context) => const AuthScreen(),
         settings: data,
       );
     },
     HomeScreen: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => HomeScreen(),
+        builder: (context) => const HomeScreen(),
         settings: data,
+      );
+    },
+    SearchScreen: (data) {
+      return PageRouteBuilder<bool>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            const SearchScreen(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.slideBottom,
       );
     },
   };

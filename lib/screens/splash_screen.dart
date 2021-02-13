@@ -24,10 +24,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _loadWidget() async {
     var _duration = Duration(seconds: splashDelay);
-    return Timer(_duration, navigationPage);
+    return Timer(_duration, _navigateToGetStartedPage);
   }
 
-  void navigationPage() {
+  void _navigateToGetStartedPage() {
     ExtendedNavigator.root.push(Routes.getStartedScreen);
   }
 

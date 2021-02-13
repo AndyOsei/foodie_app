@@ -4,6 +4,7 @@ class Sizes {
   static const double HEIGHT_OF_BOTTOM_NAV_BAR = 64.0;
   static const double SAFE_AREA_MARGIN = 24.0;
 
+  static const double SIZE_300 = 300.0;
   static const double SIZE_200 = 200.0;
   static const double SIZE_150 = 150.0;
   static const double SIZE_120 = 120.0;

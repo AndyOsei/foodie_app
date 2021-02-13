@@ -21,6 +21,7 @@ class ImagePath {
   static const String PROMO_ICON = '$iconDir/promo.png';
   static const String BUY_ICON = '$iconDir/buy.png';
   static const String SECURITY_ICON = '$iconDir/security.png';
+  static const String ARROW_RIGHT_ICON = '$iconDir/arrow_right.png';
   static const String OUTLINE_STICKY_NOTE_ICON =
       '$iconDir/outline_sticky_note.png';
 }

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: StringConst.APP_NAME,
       theme: AppTheme.themeData,
-      builder: ExtendedNavigator<AppRouter>(
+      builder: ExtendedNavigator.builder<AppRouter>(
         router: AppRouter(),
         initialRoute: Routes.splashScreen,
       ),

@@ -38,6 +38,10 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
+  void _navigateToAuthPage() {
+    ExtendedNavigator.root.push(Routes.authScreen);
+  }
+
   Align _buildButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
@@ -47,9 +51,7 @@ class GetStartedScreen extends StatelessWidget {
           width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
           height: Sizes.SIZE_60,
           child: TextButton(
-            onPressed: () {
-              ExtendedNavigator.root.push(Routes.authScreen);
-            },
+            onPressed: _navigateToAuthPage,
             style: TextButton.styleFrom(
               backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(

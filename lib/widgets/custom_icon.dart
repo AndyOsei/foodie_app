@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:foodie_app/values/values.dart';
 
 class CustomIcon extends StatelessWidget {
-  CustomIcon({Key key, @required this.name, this.color}) : super(key: key);
+  const CustomIcon({Key key, @required this.name, this.color})
+      : super(key: key);
 
   final String name;
   final Color color;
@@ -15,7 +16,8 @@ class CustomIcon extends StatelessWidget {
     "buy": ImagePath.BUY_ICON,
     "security": ImagePath.SECURITY_ICON,
     "outline_sticky_note": ImagePath.OUTLINE_STICKY_NOTE_ICON,
-    "shopping-cart": ImagePath.SHOPPING_CART_ICON,
+    "shopping_cart": ImagePath.SHOPPING_CART_ICON,
+    "arrow_right": ImagePath.ARROW_RIGHT_ICON,
   };
 
   @override

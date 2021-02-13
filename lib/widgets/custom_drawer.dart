@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_icon.dart';
 
@@ -141,6 +143,8 @@ class CustomDrawerState extends State<CustomDrawer>
 }
 
 class MyDrawer extends StatelessWidget {
+  const MyDrawer({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -189,6 +193,18 @@ class MyDrawer extends StatelessWidget {
                   onTap: () {},
                   leading: CustomIcon(name: 'security'),
                   title: Text(StringConst.SECURITY),
+                ),
+                Spacer(),
+                FractionallySizedBox(
+                  widthFactor: 0.4,
+                  child: ListTile(
+                    onTap: () {
+                      ExtendedNavigator.root.pushAndRemoveUntil(
+                          Routes.authScreen, (route) => false);
+                    },
+                    title: Text(StringConst.SIGN_OUT),
+                    trailing: CustomIcon(name: 'arrow_right'),
+                  ),
                 ),
               ],
             ),

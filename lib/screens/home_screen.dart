@@ -1,9 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie_app/models/dish.dart';
+import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_drawer.dart';
+import 'package:foodie_app/widgets/dish_card.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return CustomDrawer(
@@ -29,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white100,
+      backgroundColor: AppColors.white200,
       body: SafeArea(
         child: Column(
           children: [
@@ -94,11 +99,11 @@ class _HomePageState extends State<HomePage> {
           final List<DishType> data = snapshot.data;
           final categories = data.map((dish) => dish.name).toList();
           final categoryDishes = data.map((dish) => dish.dishes).toList();
-          for (int i = 0; i < categories.length; i++) {
-            print('--------${categories[i]}-------');
-            categoryDishes[i].forEach((d) => print(d.name));
-            print('-------- end -------');
-          }
+          // for (int i = 0; i < categories.length; i++) {
+          //   print('--------${categories[i]}-------');
+          //   categoryDishes[i].forEach((d) => print(d.name));
+          //   print('-------- end -------');
+          // }
 
           return DefaultTabController(
             length: categories.length,
@@ -106,7 +111,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Flexible(
-                  flex: 1,
+                  flex: 2,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: Sizes.SIZE_30,
@@ -130,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Flexible(
-                  flex: 4,
+                  flex: 8,
                   child: TabBarView(
                     children: List.generate(
                       categories.length,
@@ -147,58 +152,7 @@ class _HomePageState extends State<HomePage> {
                             margin: const EdgeInsets.only(
                               left: Sizes.SIZE_40,
                             ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Sizes.SIZE_30,
-                              ),
-                              boxShadow: [Shadows.dishCard],
-                              color: Colors.white,
-                            ),
-                            child: Stack(
-                              overflow: Overflow.visible,
-                              children: [
-                                Transform.translate(
-                                  offset: Offset(0.0, -40.0),
-                                  child: Align(
-                                    alignment: Alignment.topCenter,
-                                    child: ConstrainedBox(
-                                      constraints: BoxConstraints(
-                                        maxWidth: Sizes.SIZE_200,
-                                        maxHeight: Sizes.SIZE_200,
-                                      ),
-                                      child: Image.asset(
-                                        dish.image,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: const Alignment(0.0, 0.1),
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsets.all(Sizes.SIZE_40),
-                                    child: Text(
-                                      '${dish.name}',
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline4
-                                          .copyWith(color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment(0.0, 0.5),
-                                  child: Text(
-                                    '${dish.price}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline3
-                                        .copyWith(color: AppColors.red200),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            child: DishCard(dish: dish),
                           );
                         },
                       ),
@@ -215,14 +169,16 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _navigateToSearchPage() {
+    ExtendedNavigator.root.push(Routes.searchScreen);
+  }
+
   FractionallySizedBox _buildSearchButton(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: 0.9,
-      child: InkWell(
-        onTap: () {},
-        overlayColor: MaterialStateProperty.all(AppColors.black50),
-        borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-        child: Ink(
+      child: GestureDetector(
+        onTap: _navigateToSearchPage,
+        child: Container(
           padding: const EdgeInsets.symmetric(
             vertical: Sizes.SIZE_20,
             horizontal: Sizes.SIZE_30,
