@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
+import 'package:foodie_app/widgets/rounded_button.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({Key key}) : super(key: key);
@@ -85,6 +86,10 @@ class AuthScreen extends StatelessWidget {
     );
   }
 
+  void _goToHome() {
+    ExtendedNavigator.root.push(Routes.homeScreen);
+  }
+
   Padding _buildLogin(BuildContext context, TextTheme _textTheme) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: Sizes.SIZE_40),
         child: Column(
@@ -131,22 +136,11 @@ class AuthScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: Sizes.SIZE_30),
-                child: SizedBox(
+                child: RoundedButton(
                   width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
                   height: Sizes.SIZE_60,
-                  child: TextButton(
-                    onPressed: () {
-                      ExtendedNavigator.root.push(Routes.homeScreen);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColors.red200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-                      ),
-                      primary: Colors.white,
-                    ),
-                    child: Text(StringConst.LOGIN),
-                  ),
+                  label: StringConst.LOGIN,
+                  onPressed: _goToHome,
                 ),
               ),
             ),
@@ -201,22 +195,11 @@ class AuthScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.only(bottom: Sizes.SIZE_30),
-                child: SizedBox(
+                child: RoundedButton(
+                  onPressed: _goToHome,
                   width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
                   height: Sizes.SIZE_60,
-                  child: TextButton(
-                    onPressed: () {
-                      ExtendedNavigator.root.push(Routes.homeScreen);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColors.red200,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-                      ),
-                      primary: Colors.white,
-                    ),
-                    child: Text(StringConst.SIGNUP_ALT),
-                  ),
+                  label: StringConst.SIGNUP,
                 ),
               ),
             ),

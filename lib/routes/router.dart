@@ -2,6 +2,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:foodie_app/screens/auth_screen.dart';
+import 'package:foodie_app/screens/dish_info_screen.dart';
 import 'package:foodie_app/screens/get_started_screen.dart';
 import 'package:foodie_app/screens/home_screen.dart';
 import 'package:foodie_app/screens/search_screen.dart';
@@ -15,6 +16,7 @@ import 'package:foodie_app/screens/splash_screen.dart';
     MaterialRoute(page: GetStartedScreen),
     MaterialRoute(page: AuthScreen),
     MaterialRoute(page: HomeScreen),
+    MaterialRoute(page: DishInfoScreen),
 
     CustomRoute<bool>(
       page: SearchScreen,

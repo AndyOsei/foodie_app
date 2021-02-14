@@ -9,7 +9,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../models/dish.dart';
 import '../screens/auth_screen.dart';
+import '../screens/dish_info_screen.dart';
 import '../screens/get_started_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/search_screen.dart';
@@ -20,12 +22,14 @@ class Routes {
   static const String getStartedScreen = '/get-started-screen';
   static const String authScreen = '/auth-screen';
   static const String homeScreen = '/home-screen';
+  static const String dishInfoScreen = '/dish-info-screen';
   static const String searchScreen = '/search-screen';
   static const all = <String>{
     splashScreen,
     getStartedScreen,
     authScreen,
     homeScreen,
+    dishInfoScreen,
     searchScreen,
   };
 }
@@ -38,6 +42,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.getStartedScreen, page: GetStartedScreen),
     RouteDef(Routes.authScreen, page: AuthScreen),
     RouteDef(Routes.homeScreen, page: HomeScreen),
+    RouteDef(Routes.dishInfoScreen, page: DishInfoScreen),
     RouteDef(Routes.searchScreen, page: SearchScreen),
   ];
   @override
@@ -70,6 +75,16 @@ class AppRouter extends RouterBase {
         settings: data,
       );
     },
+    DishInfoScreen: (data) {
+      final args = data.getArgs<DishInfoScreenArguments>(nullOk: false);
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => DishInfoScreen(
+          key: args.key,
+          dish: args.dish,
+        ),
+        settings: data,
+      );
+    },
     SearchScreen: (data) {
       return PageRouteBuilder<bool>(
         pageBuilder: (context, animation, secondaryAnimation) =>
@@ -89,4 +104,11 @@ class AppRouter extends RouterBase {
 class SplashScreenArguments {
   final Key key;
   SplashScreenArguments({this.key});
+}
+
+/// DishInfoScreen arguments holder class
+class DishInfoScreenArguments {
+  final Key key;
+  final Dish dish;
+  DishInfoScreenArguments({this.key, @required this.dish});
 }

@@ -60,8 +60,6 @@ class _SearchScreenState extends State<SearchScreen> {
             .where((dish) => dish.name.toLowerCase().contains(search))
             .toList();
         _filteredCount = _filteredDishes.length;
-        // print('_dishes $_dishes');
-        // print('_filteredCount $_filteredCount');
       } else {
         _filteredCount = -1;
         _filtering = false;
@@ -122,7 +120,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyText2.copyWith(
                         fontFamily: StringConst.SF_PRO_TEXT,
-                        color: AppColors.gray200,
+                        color: AppColors.gray300,
                       )),
             )
           ],

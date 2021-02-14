@@ -89,6 +89,15 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
+  void _onDishCardPressed(Dish dish) {
+    ExtendedNavigator.root.push(
+      Routes.dishInfoScreen,
+      arguments: DishInfoScreenArguments(
+        dish: dish,
+      ),
+    );
+  }
+
   FutureBuilder<List<DishType>> _buildDishTabs() {
     return FutureBuilder(
       future: dishes,
@@ -153,7 +162,12 @@ class _HomePageState extends State<HomePage> {
                             margin: const EdgeInsets.only(
                               left: Sizes.SIZE_40,
                             ),
-                            child: DishCard(dish: dish),
+                            child: DishCard(
+                              dish: dish,
+                              onPressed: () {
+                                _onDishCardPressed(dish);
+                              },
+                            ),
                           );
                         },
                       ),

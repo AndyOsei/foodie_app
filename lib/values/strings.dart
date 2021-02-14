@@ -38,4 +38,14 @@ class StringConst {
   static const String ITEM_NOT_FOUND = 'Item not found';
   static const String ITEM_NOT_FOUND_HINT =
       'Try searching the item with a different keyword.';
+
+  static const String DELIVERY_INFO_TITLE = 'Delivery Info';
+  static const String DELIVERY_INFO_DESC =
+      'Delivered between monday aug and thursday 20 from 8pm to 91:32 pm';
+
+  static const String RETURN_POLICY_TITLE = 'Return policy';
+  static const String RETURN_POLICY_DESC =
+      'All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.';
+
+  static const String ADD_TO_CART = 'Add to cart';
 }
