@@ -25,6 +25,10 @@ class CustomIcon extends StatelessWidget {
     "outline_sticky_note": ImagePath.OUTLINE_STICKY_NOTE_ICON,
     "shopping_cart": ImagePath.SHOPPING_CART_ICON,
     "arrow_right": ImagePath.ARROW_RIGHT_ICON,
+    "edit": ImagePath.EDIT_ICON,
+    "credit_card": ImagePath.CREDIT_CARD_ICON,
+    "bank": ImagePath.BANK_ICON,
+    "paypal": ImagePath.PAYPAL_ICON,
   };
 
   @override

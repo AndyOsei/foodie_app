@@ -14,6 +14,7 @@ import '../screens/auth_screen.dart';
 import '../screens/dish_info_screen.dart';
 import '../screens/get_started_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/profile_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/splash_screen.dart';
 
@@ -23,6 +24,7 @@ class Routes {
   static const String authScreen = '/auth-screen';
   static const String homeScreen = '/home-screen';
   static const String dishInfoScreen = '/dish-info-screen';
+  static const String profileScreen = '/profile-screen';
   static const String searchScreen = '/search-screen';
   static const all = <String>{
     splashScreen,
@@ -30,6 +32,7 @@ class Routes {
     authScreen,
     homeScreen,
     dishInfoScreen,
+    profileScreen,
     searchScreen,
   };
 }
@@ -43,6 +46,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.authScreen, page: AuthScreen),
     RouteDef(Routes.homeScreen, page: HomeScreen),
     RouteDef(Routes.dishInfoScreen, page: DishInfoScreen),
+    RouteDef(Routes.profileScreen, page: ProfileScreen),
     RouteDef(Routes.searchScreen, page: SearchScreen),
   ];
   @override
@@ -82,6 +86,12 @@ class AppRouter extends RouterBase {
           key: args.key,
           dish: args.dish,
         ),
+        settings: data,
+      );
+    },
+    ProfileScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const ProfileScreen(),
         settings: data,
       );
     },

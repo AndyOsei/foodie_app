@@ -14,6 +14,7 @@ class AppColors {
   static const Color red400 = Color(0xFFDF2C2C);
 
   // blue
+  static const Color blue100 = Color(0xFF0038FF);
   static const Color blue200 = Color(0xFFF5F5F8);
   static const Color blue300 = Color(0xFFF6F6F9);
 
@@ -27,6 +28,7 @@ class AppColors {
   static const Color pink = Color(0xFFEB4796);
 
   // black
+  static const Color black3 = Color.fromRGBO(0, 0, 0, 0.03);
   static const Color black6 = Color.fromRGBO(0, 0, 0, 0.06);
   static const Color black50 = Color.fromRGBO(0, 0, 0, 0.5);
 

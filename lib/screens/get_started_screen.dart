@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
+import 'package:foodie_app/widgets/rounded_button.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key key}) : super(key: key);
@@ -47,20 +48,13 @@ class GetStartedScreen extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Padding(
         padding: const EdgeInsets.only(bottom: Sizes.SIZE_8),
-        child: SizedBox(
+        child: RoundedButton(
+          onPressed: _navigateToAuthPage,
           width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
           height: Sizes.SIZE_60,
-          child: TextButton(
-            onPressed: _navigateToAuthPage,
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Sizes.SIZE_30),
-              ),
-              primary: AppColors.primaryColor,
-            ),
-            child: Text(StringConst.GET_STARTED),
-          ),
+          label: StringConst.GET_STARTED,
+          labelColor: AppColors.primaryColor,
+          backgroundColor: Colors.white,
         ),
       ),
     );

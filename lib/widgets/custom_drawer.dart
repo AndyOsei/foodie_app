@@ -145,6 +145,10 @@ class CustomDrawerState extends State<CustomDrawer>
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key key}) : super(key: key);
 
+  void _navigateToProfilePage() {
+    ExtendedNavigator.root.push(Routes.profileScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -170,6 +174,7 @@ class MyDrawer extends StatelessWidget {
               children: [
                 SizedBox(height: size.height / 12),
                 ListTile(
+                  onTap: _navigateToProfilePage,
                   leading: CustomIcon(name: 'user'),
                   title: Text(StringConst.PROFILE),
                 ),

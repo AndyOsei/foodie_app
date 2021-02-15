@@ -24,4 +24,10 @@ class ImagePath {
   static const String ARROW_RIGHT_ICON = '$iconDir/arrow_right.png';
   static const String OUTLINE_STICKY_NOTE_ICON =
       '$iconDir/outline_sticky_note.png';
+  static const String EDIT_ICON = '$iconDir/edit.png';
+  static const String CREDIT_CARD_ICON = '$iconDir/credit-card.png';
+  static const String BANK_ICON = '$iconDir/bank.png';
+  static const String PAYPAL_ICON = '$iconDir/paypal.png';
+
+  static const String PROFILE_PIC = '$imageDir/profile.png';
 }

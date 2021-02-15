@@ -18,4 +18,10 @@ class Shadows {
     offset: Offset(0.0, 40.0),
     blurRadius: Sizes.SIZE_40,
   );
+
+  static const infoCard = const BoxShadow(
+    color: AppColors.black3,
+    offset: Offset(0.0, 10.0),
+    blurRadius: Sizes.SIZE_40,
+  );
 }

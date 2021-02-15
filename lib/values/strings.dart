@@ -48,4 +48,11 @@ class StringConst {
       'All our foods are double checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.';
 
   static const String ADD_TO_CART = 'Add to cart';
+
+  // Profile
+  static const String MY_PROFILE = 'My Profile';
+  static const String INFORMATION = 'Information';
+  static const String PAYMENT_METHOD = 'Payment Method';
+
+  static const String UPDATE = 'Update';
 }

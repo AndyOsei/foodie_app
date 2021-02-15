@@ -5,6 +5,7 @@ import 'package:foodie_app/screens/auth_screen.dart';
 import 'package:foodie_app/screens/dish_info_screen.dart';
 import 'package:foodie_app/screens/get_started_screen.dart';
 import 'package:foodie_app/screens/home_screen.dart';
+import 'package:foodie_app/screens/profile_screen.dart';
 import 'package:foodie_app/screens/search_screen.dart';
 import 'package:foodie_app/screens/splash_screen.dart';
 
@@ -17,6 +18,7 @@ import 'package:foodie_app/screens/splash_screen.dart';
     MaterialRoute(page: AuthScreen),
     MaterialRoute(page: HomeScreen),
     MaterialRoute(page: DishInfoScreen),
+    MaterialRoute(page: ProfileScreen),
 
     CustomRoute<bool>(
       page: SearchScreen,
