@@ -19,6 +19,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Profile _profile;
   List<PaymentMethod> _paymentMethods;
   PaymentMethod _selectedPaymentMethod;
+  bool _update = false;
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _profileNameController = TextEditingController();
+  TextEditingController _profileEmailController = TextEditingController();
+  TextEditingController _profileAddressController = TextEditingController();
 
   @override
   void initState() {
@@ -36,6 +41,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _goBack() {
     ExtendedNavigator.root.pop();
+  }
+
+  void _toggleUpdate() {
+    setState(() {
+      _update = !_update;
+      _profileNameController.text = _profile.name;
+      _profileEmailController.text = _profile.email;
+      _profileAddressController.text = _profile.address;
+    });
+  }
+
+  void _updateInfo(BuildContext context) {
+    if (_update && _formKey.currentState.validate()) {
+      setState(() {
+        _profile = Profile(
+          name: _profileNameController.text,
+          email: _profileEmailController.text,
+          address: _profileAddressController.text,
+          paymentMethod: _selectedPaymentMethod,
+        );
+        _update = false;
+      });
+    }
+  }
+
+  String _validate(String value) {
+    if (value.isEmpty) {
+      return 'required';
+    }
+    return null;
   }
 
   @override
@@ -69,7 +104,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: RoundedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _updateInfo(context);
+                  },
                   width: screenWidth - Sizes.SIZE_150,
                   height: Sizes.SIZE_60,
                   label: StringConst.UPDATE,
@@ -101,6 +138,86 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  Widget _buildProfileName(TextTheme textTheme) {
+    if (_update) {
+      return Container(
+        height: Sizes.SIZE_30,
+        padding: const EdgeInsets.only(
+          right: Sizes.SIZE_30,
+          bottom: Sizes.SIZE_10,
+        ),
+        child: TextFormField(
+          controller: _profileNameController,
+          validator: _validate,
+          decoration: InputDecoration(
+            isDense: true,
+          ),
+        ),
+      );
+    } else {
+      return Text(
+        '${_profile.name}',
+        style: textTheme.subtitle1.copyWith(
+          fontFamily: StringConst.SF_PRO_TEXT,
+        ),
+      );
+    }
+  }
+
+  Widget _buildProfileEmail(TextTheme textTheme) {
+    if (_update) {
+      return Container(
+        height: Sizes.SIZE_30,
+        padding: const EdgeInsets.only(
+          right: Sizes.SIZE_30,
+          bottom: Sizes.SIZE_10,
+        ),
+        child: TextFormField(
+          controller: _profileEmailController,
+          validator: _validate,
+          decoration: InputDecoration(
+            isDense: true,
+          ),
+        ),
+      );
+    } else {
+      return Text(
+        '${_profile.email}',
+        style: textTheme.bodyText2.copyWith(
+          fontFamily: StringConst.SF_PRO_TEXT,
+          fontSize: Sizes.TEXT_SIZE_14,
+        ),
+      );
+    }
+  }
+
+  Widget _buildProfileAddress(TextTheme textTheme) {
+    if (_update) {
+      return Container(
+        padding: const EdgeInsets.only(
+          right: Sizes.SIZE_30,
+          bottom: Sizes.SIZE_10,
+        ),
+        child: TextFormField(
+          controller: _profileAddressController,
+          maxLines: null,
+          validator: _validate,
+          decoration: InputDecoration(
+            isDense: true,
+          ),
+        ),
+      );
+    } else {
+      return Text(
+        '${_profile.address}',
+        style: textTheme.bodyText2.copyWith(
+          fontFamily: StringConst.SF_PRO_TEXT,
+          fontSize: Sizes.TEXT_SIZE_14,
+        ),
+      );
+    }
+  }
+
   List<Widget> _buildProfileInfo(TextTheme textTheme) => [
         Text(
           StringConst.INFORMATION,
@@ -123,36 +240,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(width: Sizes.SIZE_16),
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${_profile.name}',
-                        style: textTheme.subtitle1.copyWith(
-                          fontFamily: StringConst.SF_PRO_TEXT,
-                        ),
-                      ),
-                      SizedBox(height: Sizes.SIZE_8),
-                      Text(
-                        '${_profile.email}',
-                        style: textTheme.bodyText2.copyWith(
-                          fontFamily: StringConst.SF_PRO_TEXT,
-                          fontSize: Sizes.TEXT_SIZE_14,
-                        ),
-                      ),
-                      SizedBox(height: Sizes.SIZE_8),
-                      Text(
-                        '${_profile.address}',
-                        style: textTheme.bodyText2.copyWith(
-                          fontFamily: StringConst.SF_PRO_TEXT,
-                          fontSize: Sizes.TEXT_SIZE_14,
-                        ),
-                      )
-                    ],
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildProfileName(textTheme),
+                        SizedBox(height: Sizes.SIZE_8),
+                        _buildProfileEmail(textTheme),
+                        SizedBox(height: Sizes.SIZE_8),
+                        _buildProfileAddress(textTheme),
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(height: Sizes.SIZE_8),
-                CustomIcon(name: 'edit'),
+                GestureDetector(
+                  onTap: _toggleUpdate,
+                  child: CustomIcon(name: 'edit'),
+                ),
               ],
             ),
           ),
@@ -172,24 +278,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
             padding: const EdgeInsets.all(Sizes.SIZE_8),
             child: Column(
               children: List.generate(_paymentMethods.length, (int i) {
-                return _buildRadioListTile(i);
+                return _buildRadioListTile(i, textTheme);
               }),
             ),
           ),
         )
       ];
 
-  Column _buildRadioListTile(int i) {
+  void _onRadioListChanged(PaymentMethod value) {
+    setState(() {
+      _selectedPaymentMethod = value;
+    });
+  }
+
+  Column _buildRadioListTile(int i, TextTheme textTheme) {
     return Column(
       children: [
         RadioListTile<PaymentMethod>(
-          onChanged: (value) {},
+          onChanged: _onRadioListChanged,
           groupValue: _selectedPaymentMethod,
+          activeColor: _paymentMethods[i].color,
           value: _paymentMethods[i],
           title: Row(
             children: [
               Container(
-                padding: const EdgeInsets.all(Sizes.SIZE_8),
+                padding: const EdgeInsets.all(Sizes.SIZE_10),
                 decoration: BoxDecoration(
                   color: _paymentMethods[i].color,
                   borderRadius: BorderRadius.circular(
@@ -202,14 +315,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               SizedBox(width: Sizes.SIZE_12),
-              Text('${_paymentMethods[i].name}'),
+              Text(
+                '${_paymentMethods[i].name}',
+                style: textTheme.bodyText2.copyWith(
+                  fontFamily: StringConst.SF_PRO_TEXT,
+                ),
+              ),
             ],
           ),
         ),
         if (i != _paymentMethods.length - 1)
           Divider(
             color: AppColors.gray200,
-            indent: 20,
+            indent: Sizes.SIZE_20,
           ),
       ],
     );
