@@ -10,7 +10,7 @@ Dish _$DishFromJson(Map<String, dynamic> json) {
   return Dish(
     json['name'] as String,
     json['image'] as String,
-    json['price'] as String,
+    (json['price'] as num)?.toDouble(),
   );
 }
 

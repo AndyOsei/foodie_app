@@ -60,7 +60,7 @@ class DishCard extends StatelessWidget {
             Align(
               alignment: Alignment(0.0, 0.6),
               child: Text(
-                '${dish.price}',
+                '${toMoney(dish.price)}',
                 style: Theme.of(context)
                     .textTheme
                     .headline5

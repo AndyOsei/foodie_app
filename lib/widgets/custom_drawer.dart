@@ -69,7 +69,7 @@ class CustomDrawerState extends State<CustomDrawer>
             final contentScale = 1.0 - (0.3 * animValue);
             return Stack(
               children: <Widget>[
-                MyDrawer(),
+                MyDrawer(close: close),
                 Transform(
                   transform: Matrix4.identity()
                     ..translate(slideAmount - 20)
@@ -143,9 +143,12 @@ class CustomDrawerState extends State<CustomDrawer>
 }
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key key}) : super(key: key);
+  const MyDrawer({Key key, this.close}) : super(key: key);
+
+  final VoidCallback close;
 
   void _navigateToProfilePage() {
+    Future.delayed(Duration(milliseconds: 250), close);
     ExtendedNavigator.root.push(Routes.profileScreen);
   }
 

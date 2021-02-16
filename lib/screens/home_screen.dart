@@ -157,6 +157,7 @@ class _HomePageState extends State<HomePage> {
                         itemCount: categoryDishes[i].length,
                         itemBuilder: (BuildContext context, int index) {
                           final dish = categoryDishes[i][index];
+                          print('price ->  ${toMoney(dish.price)}');
                           return Container(
                             width: MediaQuery.of(context).size.width / 2,
                             margin: const EdgeInsets.only(

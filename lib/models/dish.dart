@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'dish.g.dart';
@@ -15,7 +16,7 @@ class Dish {
 
   final String name;
   final String image;
-  final String price;
+  final double price;
 
   factory Dish.fromJson(Map<String, dynamic> json) => _$DishFromJson(json);
 
@@ -38,6 +39,7 @@ class DishType {
 Future<List<DishType>> loadDishes() async {
   String jsonString = await rootBundle.loadString('assets/data.json');
   Map<String, dynamic> allDishes = jsonDecode(jsonString);
+  print('dishes -> $allDishes');
   List<DishType> dishes = List();
   for (MapEntry<String, dynamic> entry in allDishes.entries) {
     Map<String, dynamic> dishMap = {
@@ -46,5 +48,11 @@ Future<List<DishType>> loadDishes() async {
     };
     dishes.add(DishType.fromJson(dishMap));
   }
+  print('dishes -> $dishes');
   return dishes;
+}
+
+String toMoney(double value) {
+  final formatCurrency = NumberFormat.simpleCurrency(name: 'NGN');
+  return formatCurrency.format(value);
 }

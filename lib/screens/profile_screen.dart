@@ -332,4 +332,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
     );
   }
+
+  @override
+  dispose() {
+    _profileNameController.dispose();
+    _profileEmailController.dispose();
+    _profileAddressController.dispose();
+    super.dispose();
+  }
 }

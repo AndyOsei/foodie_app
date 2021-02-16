@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:foodie_app/models/dish.dart';
+import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/rounded_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -19,6 +20,10 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
 
   void _goBack() {
     ExtendedNavigator.root.pop();
+  }
+
+  void _addToCart(BuildContext context) {
+    ExtendedNavigator.root.push(Routes.cartScreen);
   }
 
   @override
@@ -151,7 +156,9 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: RoundedButton(
-              onPressed: () {},
+              onPressed: () {
+                _addToCart(context);
+              },
               width: size.width - Sizes.SIZE_150,
               height: Sizes.SIZE_60,
               label: StringConst.ADD_TO_CART,
