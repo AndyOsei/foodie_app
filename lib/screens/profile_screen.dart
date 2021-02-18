@@ -6,6 +6,7 @@ import 'package:foodie_app/models/profile.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_icon.dart';
 import 'package:foodie_app/widgets/info_card.dart';
+import 'package:foodie_app/widgets/radio_group.dart';
 import 'package:foodie_app/widgets/rounded_button.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -273,64 +274,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         SizedBox(height: Sizes.SIZE_8),
-        InfoCard(
-          child: Padding(
-            padding: const EdgeInsets.all(Sizes.SIZE_8),
-            child: Column(
-              children: List.generate(_paymentMethods.length, (int i) {
-                return _buildRadioListTile(i, textTheme);
-              }),
-            ),
-          ),
-        )
+        RadioGroup(
+          children: [
+            for (PaymentMethod paymentMethod in _paymentMethods)
+              RadioListTile<PaymentMethod>(
+                onChanged: _onRadioListChanged,
+                groupValue: _selectedPaymentMethod,
+                activeColor: paymentMethod.color,
+                value: paymentMethod,
+                title: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(Sizes.SIZE_10),
+                      decoration: BoxDecoration(
+                        color: paymentMethod.color,
+                        borderRadius: BorderRadius.circular(
+                          Sizes.SIZE_10,
+                        ),
+                      ),
+                      child: CustomIcon(
+                        name: paymentMethod.icon,
+                        color: Colors.white,
+                      ),
+                    ),
+                    SizedBox(width: Sizes.SIZE_12),
+                    Text(
+                      '${paymentMethod.name}',
+                      style: textTheme.bodyText2.copyWith(
+                        fontFamily: StringConst.SF_PRO_TEXT,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ];
 
   void _onRadioListChanged(PaymentMethod value) {
     setState(() {
       _selectedPaymentMethod = value;
     });
-  }
-
-  Column _buildRadioListTile(int i, TextTheme textTheme) {
-    return Column(
-      children: [
-        RadioListTile<PaymentMethod>(
-          onChanged: _onRadioListChanged,
-          groupValue: _selectedPaymentMethod,
-          activeColor: _paymentMethods[i].color,
-          value: _paymentMethods[i],
-          title: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(Sizes.SIZE_10),
-                decoration: BoxDecoration(
-                  color: _paymentMethods[i].color,
-                  borderRadius: BorderRadius.circular(
-                    Sizes.SIZE_10,
-                  ),
-                ),
-                child: CustomIcon(
-                  name: _paymentMethods[i].icon,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(width: Sizes.SIZE_12),
-              Text(
-                '${_paymentMethods[i].name}',
-                style: textTheme.bodyText2.copyWith(
-                  fontFamily: StringConst.SF_PRO_TEXT,
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (i != _paymentMethods.length - 1)
-          const Divider(
-            color: AppColors.gray200,
-            indent: Sizes.SIZE_20,
-          ),
-      ],
-    );
   }
 
   @override
