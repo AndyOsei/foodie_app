@@ -8,6 +8,7 @@ class Sizes {
   static const double SIZE_200 = 200.0;
   static const double SIZE_150 = 150.0;
   static const double SIZE_120 = 120.0;
+  static const double SIZE_100 = 100.0;
   static const double SIZE_96 = 96.0;
   static const double SIZE_80 = 80.0;
   static const double SIZE_70 = 70.0;
@@ -23,8 +24,9 @@ class Sizes {
   static const double SIZE_24 = 24.0;
   static const double SIZE_20 = 20.0;
   static const double SIZE_16 = 16.0;
-  static const double SIZE_10 = 10.0;
+  static const double SIZE_14 = 14.0;
   static const double SIZE_12 = 12.0;
+  static const double SIZE_10 = 10.0;
   static const double SIZE_8 = 8.0;
   static const double SIZE_6 = 6.0;
   static const double SIZE_4 = 4.0;

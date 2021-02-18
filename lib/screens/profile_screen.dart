@@ -325,7 +325,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         if (i != _paymentMethods.length - 1)
-          Divider(
+          const Divider(
             color: AppColors.gray200,
             indent: Sizes.SIZE_20,
           ),

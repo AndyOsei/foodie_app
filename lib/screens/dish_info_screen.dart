@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:foodie_app/models/cart.dart';
 import 'package:foodie_app/models/dish.dart';
 import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/rounded_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:provider/provider.dart';
 
 class DishInfoScreen extends StatefulWidget {
   const DishInfoScreen({Key key, @required this.dish}) : super(key: key);
@@ -155,17 +157,51 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
           Spacer(flex: 1),
           Align(
             alignment: Alignment.bottomCenter,
-            child: RoundedButton(
-              onPressed: () {
-                _addToCart(context);
-              },
-              width: size.width - Sizes.SIZE_150,
-              height: Sizes.SIZE_60,
-              label: StringConst.ADD_TO_CART,
-            ),
+            child: AddToCartButton(dish: widget.dish),
           ),
         ],
       ),
+    );
+  }
+}
+
+class AddToCartButton extends StatelessWidget {
+  const AddToCartButton({
+    Key key,
+    @required this.dish,
+  }) : super(key: key);
+
+  final Dish dish;
+
+  void _navigateToCartPage() {
+    ExtendedNavigator.root.push(Routes.cartScreen);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var isInCart = context.select<Cart, bool>((cart) {
+      for (CartItem item in cart.items) {
+        if ((item.dish != null) && (item.dish.id == dish.id)) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    return RoundedButton(
+      onPressed: () {
+        if (!isInCart) {
+          var cart = context.read<Cart>();
+          cart.add(CartItem(
+            dish: dish,
+            quantity: 1,
+          ));
+          _navigateToCartPage();
+        }
+      },
+      width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
+      height: Sizes.SIZE_60,
+      label: isInCart ? 'Added' : StringConst.ADD_TO_CART,
     );
   }
 }

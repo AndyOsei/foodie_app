@@ -55,4 +55,11 @@ class StringConst {
   static const String PAYMENT_METHOD = 'Payment Method';
 
   static const String UPDATE = 'Update';
+
+  // Cart
+  static const String CART = 'Cart';
+  static const String SWIPE_TO_DELETE = 'swipe on an item to delete';
+  static const String EMPTY_CART = 'Cart is empty';
+
+  static const String COMPLETE_ORDER = 'Complete order';
 }

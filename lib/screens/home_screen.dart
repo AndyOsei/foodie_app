@@ -47,6 +47,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _navigateToCartPage() {
+    ExtendedNavigator.root.push(Routes.cartScreen);
+  }
+
   Padding _buildUpper(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
           top: Sizes.SIZE_30,
@@ -63,9 +67,12 @@ class _HomePageState extends State<HomePage> {
                   onTap: () {
                     CustomDrawer.of(context).toggleDrawer();
                   },
-                  child: Image.asset(ImagePath.MENU_ICON),
+                  child: CustomIcon(name: 'menu'),
                 ),
-                Image.asset(ImagePath.SHOPPING_CART_ICON),
+                GestureDetector(
+                  onTap: _navigateToCartPage,
+                  child: CustomIcon(name: 'shopping_cart'),
+                ),
               ],
             ),
             Spacer(),
@@ -157,7 +164,6 @@ class _HomePageState extends State<HomePage> {
                         itemCount: categoryDishes[i].length,
                         itemBuilder: (BuildContext context, int index) {
                           final dish = categoryDishes[i][index];
-                          print('price ->  ${toMoney(dish.price)}');
                           return Container(
                             width: MediaQuery.of(context).size.width / 2,
                             margin: const EdgeInsets.only(

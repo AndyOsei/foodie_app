@@ -152,6 +152,11 @@ class MyDrawer extends StatelessWidget {
     ExtendedNavigator.root.push(Routes.profileScreen);
   }
 
+  void _navigateToCartPage() {
+    Future.delayed(Duration(milliseconds: 250), close);
+    ExtendedNavigator.root.push(Routes.cartScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -183,6 +188,7 @@ class MyDrawer extends StatelessWidget {
                 ),
                 const Divider(),
                 ListTile(
+                  onTap: _navigateToCartPage,
                   leading: CustomIcon(name: 'buy'),
                   title: Text(StringConst.ORDERS),
                 ),

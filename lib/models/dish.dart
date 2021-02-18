@@ -8,12 +8,14 @@ part 'dish.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Dish {
-  Dish(
+  Dish({
+    this.id,
     this.name,
     this.image,
     this.price,
-  );
+  });
 
+  final int id;
   final String name;
   final String image;
   final double price;
@@ -39,7 +41,6 @@ class DishType {
 Future<List<DishType>> loadDishes() async {
   String jsonString = await rootBundle.loadString('assets/data.json');
   Map<String, dynamic> allDishes = jsonDecode(jsonString);
-  print('dishes -> $allDishes');
   List<DishType> dishes = List();
   for (MapEntry<String, dynamic> entry in allDishes.entries) {
     Map<String, dynamic> dishMap = {
@@ -48,7 +49,6 @@ Future<List<DishType>> loadDishes() async {
     };
     dishes.add(DishType.fromJson(dishMap));
   }
-  print('dishes -> $dishes');
   return dishes;
 }
 

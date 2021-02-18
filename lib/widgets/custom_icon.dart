@@ -29,6 +29,9 @@ class CustomIcon extends StatelessWidget {
     "credit_card": ImagePath.CREDIT_CARD_ICON,
     "bank": ImagePath.BANK_ICON,
     "paypal": ImagePath.PAYPAL_ICON,
+    "swipe": ImagePath.SWIPE_ICON,
+    "trash": ImagePath.TRASH_ICON,
+    "shopping_cart_alt": ImagePath.SHOPPING_CART_ALT_ICON,
   };
 
   @override

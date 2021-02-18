@@ -28,6 +28,9 @@ class ImagePath {
   static const String CREDIT_CARD_ICON = '$iconDir/credit-card.png';
   static const String BANK_ICON = '$iconDir/bank.png';
   static const String PAYPAL_ICON = '$iconDir/paypal.png';
+  static const String SWIPE_ICON = '$iconDir/swipe.png';
+  static const String TRASH_ICON = '$iconDir/trash.png';
+  static const String SHOPPING_CART_ALT_ICON = '$iconDir/shopping_cart_alt.png';
 
   static const String PROFILE_PIC = '$imageDir/profile.png';
 }
