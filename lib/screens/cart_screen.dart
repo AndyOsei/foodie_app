@@ -22,12 +22,6 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.blue200,
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 0,
-        backgroundColor: Colors.transparent,
-        brightness: Brightness.light,
-      ),
       body: SafeArea(
         bottom: false,
         child: Padding(

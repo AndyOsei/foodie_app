@@ -81,12 +81,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.blue200,
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 0,
-        backgroundColor: Colors.transparent,
-        brightness: Brightness.light,
-      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(

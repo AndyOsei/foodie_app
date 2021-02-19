@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:foodie_app/screens/auth_screen.dart';
 import 'package:foodie_app/screens/cart_screen.dart';
+import 'package:foodie_app/screens/checkout_screen.dart';
 import 'package:foodie_app/screens/dish_info_screen.dart';
 import 'package:foodie_app/screens/get_started_screen.dart';
 import 'package:foodie_app/screens/home_screen.dart';
@@ -21,6 +22,7 @@ import 'package:foodie_app/screens/splash_screen.dart';
     MaterialRoute(page: DishInfoScreen),
     MaterialRoute(page: ProfileScreen),
     MaterialRoute(page: CartScreen),
+    MaterialRoute(page: CheckoutScreen),
 
     CustomRoute<bool>(
       page: SearchScreen,

@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import '../models/dish.dart';
 import '../screens/auth_screen.dart';
 import '../screens/cart_screen.dart';
+import '../screens/checkout_screen.dart';
 import '../screens/dish_info_screen.dart';
 import '../screens/get_started_screen.dart';
 import '../screens/home_screen.dart';
@@ -27,6 +28,7 @@ class Routes {
   static const String dishInfoScreen = '/dish-info-screen';
   static const String profileScreen = '/profile-screen';
   static const String cartScreen = '/cart-screen';
+  static const String checkoutScreen = '/checkout-screen';
   static const String searchScreen = '/search-screen';
   static const all = <String>{
     splashScreen,
@@ -36,6 +38,7 @@ class Routes {
     dishInfoScreen,
     profileScreen,
     cartScreen,
+    checkoutScreen,
     searchScreen,
   };
 }
@@ -51,6 +54,7 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.dishInfoScreen, page: DishInfoScreen),
     RouteDef(Routes.profileScreen, page: ProfileScreen),
     RouteDef(Routes.cartScreen, page: CartScreen),
+    RouteDef(Routes.checkoutScreen, page: CheckoutScreen),
     RouteDef(Routes.searchScreen, page: SearchScreen),
   ];
   @override
@@ -102,6 +106,12 @@ class AppRouter extends RouterBase {
     CartScreen: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const CartScreen(),
+        settings: data,
+      );
+    },
+    CheckoutScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const CheckoutScreen(),
         settings: data,
       );
     },
