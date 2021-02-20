@@ -4,6 +4,7 @@ class StringConst {
   static const String APP_NAME = 'Foodie';
 
   static const String SF_PRO_ROUNDED = 'SF Pro Rounded';
+  static const String SF_PRO_TEXT = 'SF Pro Text';
 
   // Splash
   static const String FOOD_FOR_EVERYONE = 'Food for Everyone';
@@ -14,7 +15,6 @@ class StringConst {
   static const String SIGNUP = 'Sign-up';
   static const String SIGNUP_ALT = 'Sign up';
 
-  static const String SF_PRO_TEXT = 'SF Pro Text';
   static const String EMAIL_ADDRESS = 'Email Address';
   static const String PASSWORD = 'Password';
   static const String CONFIRM_PASSWORD = 'Confirm Password';
@@ -62,4 +62,15 @@ class StringConst {
   static const String EMPTY_CART = 'Cart is empty';
 
   static const String COMPLETE_ORDER = 'Complete order';
+
+  // Checkout
+  static const String CHECKOUT = 'Checkout';
+
+  static const String DELIVERY = 'Delivery';
+  static const String ADDRESS_DETAILS = 'Address details';
+  static const String CHANGE = 'change';
+  static const String CANCEL = 'cancel';
+  static const String DELIVERY_METHOD = 'Delivery method';
+  static const String TOTAL = 'Total';
+  static const String PROCEED_TO_PAYMENT = 'Proceed to payment';
 }

@@ -24,10 +24,6 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
     ExtendedNavigator.root.pop();
   }
 
-  void _addToCart(BuildContext context) {
-    ExtendedNavigator.root.push(Routes.cartScreen);
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:foodie_app/models/cart.dart';
 import 'package:foodie_app/models/dish.dart';
+import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_icon.dart';
 import 'package:foodie_app/widgets/info_card.dart';
@@ -76,6 +77,15 @@ class _CartList extends StatelessWidget {
         : _buildWhenCartIsEmpty(context);
   }
 
+  void _navigateToCheckoutPage(Cart cart) {
+    ExtendedNavigator.root.push(
+      Routes.checkoutScreen,
+      arguments: CheckoutScreenArguments(
+        cartItems: cart.items,
+      ),
+    );
+  }
+
   Column _buildWhenCartIsEmpty(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -120,7 +130,7 @@ class _CartList extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(bottom: Sizes.SIZE_16),
                   child: Slidable(
-                    key: ValueKey(index),
+                    key: UniqueKey(),
                     actionPane: SlidableDrawerActionPane(),
                     actionExtentRatio: 0.2,
                     child: _CartItemCard(
@@ -176,7 +186,9 @@ class _CartList extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(bottom: Sizes.SIZE_20),
             child: RoundedButton(
-              onPressed: () {},
+              onPressed: () {
+                _navigateToCheckoutPage(cart);
+              },
               label: StringConst.COMPLETE_ORDER,
               width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
               height: Sizes.SIZE_60,

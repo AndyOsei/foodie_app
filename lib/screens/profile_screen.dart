@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:foodie_app/models/payment_method.dart';
 import 'package:foodie_app/models/profile.dart';
 import 'package:foodie_app/values/values.dart';
@@ -8,6 +7,7 @@ import 'package:foodie_app/widgets/custom_icon.dart';
 import 'package:foodie_app/widgets/info_card.dart';
 import 'package:foodie_app/widgets/radio_group.dart';
 import 'package:foodie_app/widgets/rounded_button.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key key}) : super(key: key);
@@ -17,7 +17,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  Profile _profile;
   List<PaymentMethod> _paymentMethods;
   PaymentMethod _selectedPaymentMethod;
   bool _update = false;
@@ -28,16 +27,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    _profile = Profile(
-      name: 'Marvis Ighedosa',
-      email: 'dosamarvis@gmail.com',
-      address: 'No 15 uti street off ovie palace road effurun delta state',
-    );
-
+    super.initState();
     _paymentMethods = defaultPaymentMethods();
     _selectedPaymentMethod = _paymentMethods[0];
-
-    super.initState();
   }
 
   void _goBack() {
@@ -46,22 +38,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _toggleUpdate() {
     setState(() {
+      var profile = context.read<Profile>();
+      _profileNameController.text = profile.name;
+      _profileEmailController.text = profile.email;
+      _profileAddressController.text = profile.address;
       _update = !_update;
-      _profileNameController.text = _profile.name;
-      _profileEmailController.text = _profile.email;
-      _profileAddressController.text = _profile.address;
     });
   }
 
   void _updateInfo(BuildContext context) {
     if (_update && _formKey.currentState.validate()) {
+      var profile = context.read<Profile>();
+      profile.updateWith(
+        newName: _profileNameController.text != profile.name
+            ? _profileNameController.text
+            : null,
+        newEmail: _profileEmailController.text != profile.email
+            ? _profileEmailController.text
+            : null,
+        newAddress: _profileAddressController.text != profile.address
+            ? _profileAddressController.text
+            : null,
+        newPaymentMethod: _selectedPaymentMethod,
+      );
       setState(() {
-        _profile = Profile(
-          name: _profileNameController.text,
-          email: _profileEmailController.text,
-          address: _profileAddressController.text,
-          paymentMethod: _selectedPaymentMethod,
-        );
         _update = false;
       });
     }
@@ -92,7 +92,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               _buildHeader(screenWidth),
               Spacer(flex: 1),
-              ..._buildProfileInfo(textTheme),
+              Consumer<Profile>(
+                builder: (_, profile, child) =>
+                    _buildProfileInfo(textTheme, profile),
+              ),
               Spacer(flex: 1),
               ..._buildPaymentMethodsRadioGroup(textTheme),
               Spacer(flex: 4),
@@ -133,7 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget _buildProfileName(TextTheme textTheme) {
+  Widget _buildProfileName(TextTheme textTheme, Profile profile) {
     if (_update) {
       return Container(
         height: Sizes.SIZE_30,
@@ -151,7 +154,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
     } else {
       return Text(
-        '${_profile.name}',
+        '${profile.name}',
         style: textTheme.subtitle1.copyWith(
           fontFamily: StringConst.SF_PRO_TEXT,
         ),
@@ -159,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Widget _buildProfileEmail(TextTheme textTheme) {
+  Widget _buildProfileEmail(TextTheme textTheme, Profile profile) {
     if (_update) {
       return Container(
         height: Sizes.SIZE_30,
@@ -177,7 +180,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
     } else {
       return Text(
-        '${_profile.email}',
+        '${profile.email}',
         style: textTheme.bodyText2.copyWith(
           fontFamily: StringConst.SF_PRO_TEXT,
           fontSize: Sizes.TEXT_SIZE_14,
@@ -186,7 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  Widget _buildProfileAddress(TextTheme textTheme) {
+  Widget _buildProfileAddress(TextTheme textTheme, Profile profile) {
     if (_update) {
       return Container(
         padding: const EdgeInsets.only(
@@ -204,7 +207,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       );
     } else {
       return Text(
-        '${_profile.address}',
+        '${profile.address}',
         style: textTheme.bodyText2.copyWith(
           fontFamily: StringConst.SF_PRO_TEXT,
           fontSize: Sizes.TEXT_SIZE_14,
@@ -213,52 +216,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  List<Widget> _buildProfileInfo(TextTheme textTheme) => [
-        Text(
-          StringConst.INFORMATION,
-          style: textTheme.subtitle1.copyWith(
-            fontFamily: StringConst.SF_PRO_TEXT,
-          ),
-        ),
-        SizedBox(height: Sizes.SIZE_8),
-        InfoCard(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: Sizes.SIZE_16,
-              vertical: Sizes.SIZE_20,
+  Widget _buildProfileInfo(TextTheme textTheme, Profile profile) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            StringConst.INFORMATION,
+            style: textTheme.subtitle1.copyWith(
+              fontFamily: StringConst.SF_PRO_TEXT,
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset(
-                  ImagePath.PROFILE_PIC,
-                ),
-                SizedBox(width: Sizes.SIZE_16),
-                Expanded(
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildProfileName(textTheme),
-                        SizedBox(height: Sizes.SIZE_8),
-                        _buildProfileEmail(textTheme),
-                        SizedBox(height: Sizes.SIZE_8),
-                        _buildProfileAddress(textTheme),
-                      ],
+          ),
+          SizedBox(height: Sizes.SIZE_8),
+          InfoCard(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Sizes.SIZE_16,
+                vertical: Sizes.SIZE_20,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    ImagePath.PROFILE_PIC,
+                  ),
+                  SizedBox(width: Sizes.SIZE_16),
+                  Expanded(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildProfileName(textTheme, profile),
+                          SizedBox(height: Sizes.SIZE_8),
+                          _buildProfileEmail(textTheme, profile),
+                          SizedBox(height: Sizes.SIZE_8),
+                          _buildProfileAddress(textTheme, profile),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: Sizes.SIZE_8),
-                GestureDetector(
-                  onTap: _toggleUpdate,
-                  child: CustomIcon(name: 'edit'),
-                ),
-              ],
+                  SizedBox(height: Sizes.SIZE_8),
+                  GestureDetector(
+                    onTap: _toggleUpdate,
+                    child: CustomIcon(name: 'edit'),
+                  ),
+                ],
+              ),
             ),
-          ),
-        )
-      ];
+          )
+        ],
+      );
 
   List<Widget> _buildPaymentMethodsRadioGroup(TextTheme textTheme) => [
         Text(

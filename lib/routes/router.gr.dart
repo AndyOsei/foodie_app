@@ -9,6 +9,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../models/cart.dart';
 import '../models/dish.dart';
 import '../screens/auth_screen.dart';
 import '../screens/cart_screen.dart';
@@ -110,8 +111,13 @@ class AppRouter extends RouterBase {
       );
     },
     CheckoutScreen: (data) {
+      final args = data.getArgs<CheckoutScreenArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const CheckoutScreen(),
+        builder: (context) => CheckoutScreen(
+          key: args.key,
+          cartItems: args.cartItems,
+          stage: args.stage,
+        ),
         settings: data,
       );
     },
@@ -141,4 +147,13 @@ class DishInfoScreenArguments {
   final Key key;
   final Dish dish;
   DishInfoScreenArguments({this.key, @required this.dish});
+}
+
+/// CheckoutScreen arguments holder class
+class CheckoutScreenArguments {
+  final Key key;
+  final List<CartItem> cartItems;
+  final String stage;
+  CheckoutScreenArguments(
+      {this.key, @required this.cartItems, this.stage = 'Delivery'});
 }
