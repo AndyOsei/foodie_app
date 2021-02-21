@@ -31,4 +31,9 @@ class Cart extends ChangeNotifier {
     _items.removeAt(index);
     notifyListeners();
   }
+
+  void clear() {
+    _items.clear();
+    notifyListeners();
+  }
 }

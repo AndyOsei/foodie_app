@@ -50,7 +50,7 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
               ),
               SizedBox(height: Sizes.SIZE_8),
               Text(
-                '${widget.dish.price}',
+                '${toMoney(widget.dish.price)}',
                 style: textTheme.headline3.copyWith(
                   fontWeight: FontWeight.w700,
                   color: AppColors.red200,

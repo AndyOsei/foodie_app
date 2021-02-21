@@ -3,8 +3,10 @@ part of values;
 class StringConst {
   static const String APP_NAME = 'Foodie';
 
+  // fonts
   static const String SF_PRO_ROUNDED = 'SF Pro Rounded';
   static const String SF_PRO_TEXT = 'SF Pro Text';
+  static const String POPPINS = 'Poppins';
 
   // Splash
   static const String FOOD_FOR_EVERYONE = 'Food for Everyone';
@@ -69,8 +71,13 @@ class StringConst {
   static const String DELIVERY = 'Delivery';
   static const String ADDRESS_DETAILS = 'Address details';
   static const String CHANGE = 'change';
-  static const String CANCEL = 'cancel';
+  static const String CANCEL = 'Cancel';
   static const String DELIVERY_METHOD = 'Delivery method';
   static const String TOTAL = 'Total';
   static const String PROCEED_TO_PAYMENT = 'Proceed to payment';
+  static const String FINISH = 'Finish';
+  static const String PLEASE_NOTE = 'Please note';
+  static const String DELIVERY_TO_MAINLAND = 'DELIVERY TO MAINLAND';
+  static const String DELIVERY_TO_ISLAND = 'DELIVERY TO ISLAND';
+  static const String PROCEED = 'Proceed';
 }

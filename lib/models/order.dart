@@ -8,6 +8,7 @@ class Order {
     @required this.address,
     @required this.mobile,
     @required this.deliveryMethod,
+    this.total = 0.0,
     this.items,
   });
 
@@ -16,6 +17,7 @@ class Order {
   String mobile;
   String deliveryMethod;
   List<CartItem> items;
+  double total;
 }
 
 class Orders extends ChangeNotifier {

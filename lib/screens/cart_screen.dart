@@ -68,9 +68,6 @@ class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var cart = context.watch<Cart>();
-    for (CartItem item in cart.items) {
-      print('name - ${item.dish.name}, qt - ${item.quantity}');
-    }
 
     return cart.items.length > 0
         ? _buildWhenCartIsNotEmpty(context, cart)

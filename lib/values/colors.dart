@@ -5,6 +5,7 @@ class AppColors {
   static const Color accentColor = orange;
 
   //white
+  static const Color white50 = Color(0xFFEDEDED);
   static const Color white100 = Color(0xFFF9F9F9);
   static const Color white200 = Color(0xFFF2F2F2);
 
@@ -37,4 +38,5 @@ class AppColors {
   static const Color gray100 = Color(0xFFC7C7C7);
   static const Color gray200 = Color(0xFFC4C4C4);
   static const Color gray300 = Color(0xFF9A9A9D);
+  static const Color gray400 = Color(0xFF9F9F9F);
 }

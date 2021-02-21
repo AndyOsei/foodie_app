@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../models/cart.dart';
 import '../models/dish.dart';
+import '../models/order.dart';
 import '../screens/auth_screen.dart';
 import '../screens/cart_screen.dart';
 import '../screens/checkout_screen.dart';
@@ -111,10 +112,13 @@ class AppRouter extends RouterBase {
       );
     },
     CheckoutScreen: (data) {
-      final args = data.getArgs<CheckoutScreenArguments>(nullOk: false);
+      final args = data.getArgs<CheckoutScreenArguments>(
+        orElse: () => CheckoutScreenArguments(),
+      );
       return MaterialPageRoute<dynamic>(
         builder: (context) => CheckoutScreen(
           key: args.key,
+          order: args.order,
           cartItems: args.cartItems,
           stage: args.stage,
         ),
@@ -152,8 +156,9 @@ class DishInfoScreenArguments {
 /// CheckoutScreen arguments holder class
 class CheckoutScreenArguments {
   final Key key;
+  final Order order;
   final List<CartItem> cartItems;
   final String stage;
   CheckoutScreenArguments(
-      {this.key, @required this.cartItems, this.stage = 'Delivery'});
+      {this.key, this.order, this.cartItems, this.stage = 'Delivery'});
 }

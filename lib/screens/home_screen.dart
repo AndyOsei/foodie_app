@@ -116,11 +116,6 @@ class _HomePageState extends State<HomePage> {
           final List<DishType> data = snapshot.data;
           final categories = data.map((dish) => dish.name).toList();
           final categoryDishes = data.map((dish) => dish.dishes).toList();
-          // for (int i = 0; i < categories.length; i++) {
-          //   print('--------${categories[i]}-------');
-          //   categoryDishes[i].forEach((d) => print(d.name));
-          //   print('-------- end -------');
-          // }
 
           return DefaultTabController(
             length: categories.length,
