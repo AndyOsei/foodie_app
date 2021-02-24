@@ -6,6 +6,17 @@ A Food Delivery App UI KIT built with flutter.
 
 Find actual designs in the [figma community](https://www.figma.com/community/file/893381127703378146/Food-delivery-app-Ui-kit) designed by: @marvisdosa
 
+### SETUP
+
+- clone the project
+  ```
+  git clone https://github.com/AndyOsei/foodie_app
+  ```
+- make sure you have flutter installed and run
+  ```
+  flutter run
+  ```
+
 ### Contributions
 
 If you face an issue or have any contributions, you can open an issue or reach out to me at @andyosei36@gmail.com. Do follow me on [twitter](https://twitter.com/andyosei36).
