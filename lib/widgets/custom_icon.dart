@@ -8,12 +8,14 @@ class CustomIcon extends StatelessWidget {
     this.color,
     this.width,
     this.height,
+    this.size,
   }) : super(key: key);
 
   final String name;
   final Color color;
   final double width;
   final double height;
+  final double size;
 
   static final Map<String, String> icons = {
     "menu": ImagePath.MENU_ICON,
@@ -32,6 +34,8 @@ class CustomIcon extends StatelessWidget {
     "swipe": ImagePath.SWIPE_ICON,
     "trash": ImagePath.TRASH_ICON,
     "shopping_cart_alt": ImagePath.SHOPPING_CART_ALT_ICON,
+    "user_alt": ImagePath.USER_ALT_ICON,
+    "doc": ImagePath.DOC_ICON,
   };
 
   @override
@@ -39,8 +43,8 @@ class CustomIcon extends StatelessWidget {
     return Image.asset(
       '${icons[name]}',
       color: color,
-      width: width,
-      height: height,
+      width: size ?? width,
+      height: size ?? height,
       fit: BoxFit.contain,
     );
   }

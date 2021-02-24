@@ -25,17 +25,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Future<List<DishType>> dishes;
+  String _selectedTab;
 
   @override
   void initState() {
     super.initState();
     dishes = loadDishes();
+    _selectedTab = Routes.homeScreen;
+  }
+
+  Color getIndicatorColor({String tab}) {
+    if (tab == _selectedTab) {
+      return AppColors.red200;
+    }
+    return AppColors.blue400;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white200,
+      appBar: _buildAppBar(context),
       body: SafeArea(
         child: Column(
           children: [
@@ -44,6 +54,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+      bottomNavigationBar: _buildBottomTabs(),
     );
   }
 
@@ -51,31 +62,108 @@ class _HomePageState extends State<HomePage> {
     ExtendedNavigator.root.push(Routes.cartScreen);
   }
 
+  void _navigateToPage(BuildContext context, String screen) async {
+    if (screen != _selectedTab) {
+      setState(() {
+        _selectedTab = screen;
+      });
+      final result = await ExtendedNavigator.of(context).push(screen);
+      if (result) {
+        setState(() {
+          _selectedTab = Routes.homeScreen;
+        });
+      }
+    }
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: AppColors.white200,
+      brightness: Brightness.light,
+      automaticallyImplyLeading: false,
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Sizes.SIZE_20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () {
+                CustomDrawer.of(context).toggleDrawer();
+              },
+              child: CustomIcon(name: 'menu'),
+            ),
+            GestureDetector(
+              onTap: _navigateToCartPage,
+              child: CustomIcon(name: 'shopping_cart'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBottomTabs() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Sizes.SIZE_24),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: InkWell(
+              onTap: () {
+                _navigateToPage(context, Routes.homeScreen);
+              },
+              splashColor: getIndicatorColor(tab: Routes.homeScreen),
+              child: Icon(
+                Icons.home,
+                color: getIndicatorColor(tab: Routes.homeScreen),
+              ),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: () {},
+              child: Icon(Icons.favorite_border, color: getIndicatorColor()),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: () {
+                _navigateToPage(context, Routes.profileScreen);
+              },
+              child: CustomIcon(
+                name: 'user_alt',
+                size: 24,
+                color: getIndicatorColor(tab: Routes.profileScreen),
+              ),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: () {
+                _navigateToPage(context, Routes.historyScreen);
+              },
+              child: Icon(
+                Icons.history,
+                color: getIndicatorColor(tab: Routes.historyScreen),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding _buildUpper(BuildContext context) => Padding(
         padding: const EdgeInsets.only(
-          top: Sizes.SIZE_30,
-          left: Sizes.SIZE_30,
-          right: Sizes.SIZE_30,
+          top: Sizes.SIZE_20,
+          left: Sizes.SIZE_20,
+          right: Sizes.SIZE_20,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    CustomDrawer.of(context).toggleDrawer();
-                  },
-                  child: CustomIcon(name: 'menu'),
-                ),
-                GestureDetector(
-                  onTap: _navigateToCartPage,
-                  child: CustomIcon(name: 'shopping_cart'),
-                ),
-              ],
-            ),
-            Spacer(),
             Text(
               StringConst.DELICIOUS,
               style: Theme.of(context).textTheme.headline2.copyWith(
@@ -161,8 +249,8 @@ class _HomePageState extends State<HomePage> {
                           final dish = categoryDishes[i][index];
                           return Container(
                             width: MediaQuery.of(context).size.width / 2,
-                            margin: const EdgeInsets.only(
-                              left: Sizes.SIZE_40,
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: Sizes.SIZE_20,
                             ),
                             child: DishCard(
                               dish: dish,
@@ -198,7 +286,7 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           padding: const EdgeInsets.symmetric(
             vertical: Sizes.SIZE_20,
-            horizontal: Sizes.SIZE_30,
+            horizontal: Sizes.SIZE_20,
           ),
           decoration: BoxDecoration(
             color: AppColors.gray,
@@ -206,7 +294,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Row(
             children: [
-              CustomIcon(name: 'search', width: 24, height: 24),
+              CustomIcon(name: 'search', size: 24),
               Padding(
                 padding: const EdgeInsets.only(left: Sizes.SIZE_16),
                 child: Text(

@@ -80,4 +80,11 @@ class StringConst {
   static const String DELIVERY_TO_MAINLAND = 'DELIVERY TO MAINLAND';
   static const String DELIVERY_TO_ISLAND = 'DELIVERY TO ISLAND';
   static const String PROCEED = 'Proceed';
+
+  // history
+  static const String HISTORY = 'History';
+  static const String NO_HISTORY_YET = 'No history yet';
+  static const String START_ORDERING = 'Start ordering';
+  static const String CREATE_ORDER_INST =
+      'Hit the orange button down below to Create an order';
 }

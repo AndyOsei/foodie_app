@@ -33,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _goBack() {
-    ExtendedNavigator.root.pop();
+    ExtendedNavigator.root.pop(true);
   }
 
   void _toggleUpdate() {
@@ -81,6 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.blue200,
+      appBar: _buildAppBar(context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -90,7 +91,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(screenWidth),
               Spacer(flex: 1),
               Consumer<Profile>(
                 builder: (_, profile, child) =>
@@ -117,22 +117,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Row _buildHeader(double screenWidth) {
-    return Row(
-      children: [
-        IconButton(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.all(0.0),
-          onPressed: _goBack,
-          icon: Icon(
-            Icons.keyboard_arrow_left,
-          ),
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: AppColors.blue200,
+      brightness: Brightness.light,
+      leading: IconButton(
+        onPressed: _goBack,
+        icon: Icon(
+          Icons.keyboard_arrow_left,
+          color: Colors.black,
         ),
-        SizedBox(width: screenWidth / 5),
-        Text(
-          StringConst.MY_PROFILE,
-        ),
-      ],
+      ),
+      title: Text(
+        StringConst.MY_PROFILE,
+        style: Theme.of(context).textTheme.headline4.copyWith(
+              fontFamily: StringConst.SF_PRO_TEXT,
+              fontSize: Sizes.TEXT_SIZE_18,
+              color: Colors.black,
+            ),
+      ),
+      centerTitle: true,
     );
   }
 

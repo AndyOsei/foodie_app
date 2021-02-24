@@ -19,45 +19,42 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       backgroundColor: AppColors.blue200,
+      appBar: _buildAppBar(context),
       body: SafeArea(
-        bottom: false,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: Sizes.SIZE_30,
             vertical: Sizes.SIZE_16,
           ),
-          child: Column(
-            children: [
-              _buildHeader(screenWidth),
-              SizedBox(height: Sizes.SIZE_40),
-              Expanded(child: _CartList()),
-            ],
-          ),
+          child: _CartList(),
         ),
       ),
     );
   }
 
-  Row _buildHeader(double screenWidth) {
-    return Row(
-      children: [
-        IconButton(
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.all(Sizes.SIZE_0),
-          onPressed: _goBack,
-          icon: Icon(
-            Icons.keyboard_arrow_left,
-          ),
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: AppColors.blue200,
+      brightness: Brightness.light,
+      leading: IconButton(
+        onPressed: _goBack,
+        icon: Icon(
+          Icons.keyboard_arrow_left,
+          color: Colors.black,
         ),
-        SizedBox(width: screenWidth / 5),
-        Text(
-          StringConst.CART,
-        ),
-      ],
+      ),
+      title: Text(
+        StringConst.CART,
+        style: Theme.of(context).textTheme.headline4.copyWith(
+              fontFamily: StringConst.SF_PRO_TEXT,
+              fontSize: Sizes.TEXT_SIZE_18,
+              color: Colors.black,
+            ),
+      ),
+      centerTitle: true,
     );
   }
 }
@@ -83,22 +80,25 @@ class _CartList extends StatelessWidget {
     );
   }
 
-  Column _buildWhenCartIsEmpty(BuildContext context) => Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomIcon(
-            name: 'shopping_cart_alt',
-          ),
-          SizedBox(height: Sizes.SIZE_20),
-          Text(
-            StringConst.EMPTY_CART,
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                  fontFamily: StringConst.SF_PRO_TEXT,
-                  fontSize: Sizes.TEXT_SIZE_28,
-                  color: Colors.black,
-                ),
-          )
-        ],
+  Widget _buildWhenCartIsEmpty(BuildContext context) => Center(
+        child: Column(
+          children: [
+            Spacer(),
+            CustomIcon(
+              name: 'shopping_cart_alt',
+            ),
+            SizedBox(height: Sizes.SIZE_20),
+            Text(
+              StringConst.EMPTY_CART,
+              style: Theme.of(context).textTheme.headline4.copyWith(
+                    fontFamily: StringConst.SF_PRO_TEXT,
+                    fontSize: Sizes.TEXT_SIZE_28,
+                    color: Colors.black,
+                  ),
+            ),
+            Spacer(),
+          ],
+        ),
       );
 
   Widget _buildWhenCartIsNotEmpty(BuildContext context, Cart cart) {

@@ -276,6 +276,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
+              textStyle: textTheme.bodyText1.copyWith(
+                fontFamily: StringConst.POPPINS,
+              ),
             ),
             onPressed: () {
               ExtendedNavigator.root.pop();
@@ -293,6 +296,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 borderRadius: BorderRadius.circular(30),
               ),
               backgroundColor: AppColors.red200,
+              textStyle: textTheme.bodyText1.copyWith(
+                fontFamily: StringConst.POPPINS,
+              ),
             ),
             onPressed: () {
               var orders = context.read<Orders>();
@@ -354,6 +360,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               color: Colors.black,
             ),
       ),
+      centerTitle: true,
     );
   }
 

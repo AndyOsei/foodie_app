@@ -18,6 +18,7 @@ class ImagePath {
   static const String SHOPPING_CART_ICON = '$iconDir/shopping_cart.png';
   static const String SEARCH_ICON = '$iconDir/search.png';
   static const String USER_ICON = '$iconDir/user.png';
+  static const String USER_ALT_ICON = '$iconDir/user_alt.png';
   static const String PROMO_ICON = '$iconDir/promo.png';
   static const String BUY_ICON = '$iconDir/buy.png';
   static const String SECURITY_ICON = '$iconDir/security.png';
@@ -31,6 +32,7 @@ class ImagePath {
   static const String SWIPE_ICON = '$iconDir/swipe.png';
   static const String TRASH_ICON = '$iconDir/trash.png';
   static const String SHOPPING_CART_ALT_ICON = '$iconDir/shopping_cart_alt.png';
+  static const String DOC_ICON = '$iconDir/doc.png';
 
   static const String PROFILE_PIC = '$imageDir/profile.png';
 }

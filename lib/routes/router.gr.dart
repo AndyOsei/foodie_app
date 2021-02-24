@@ -17,7 +17,9 @@ import '../screens/cart_screen.dart';
 import '../screens/checkout_screen.dart';
 import '../screens/dish_info_screen.dart';
 import '../screens/get_started_screen.dart';
+import '../screens/history_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/orders_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/splash_screen.dart';
@@ -31,6 +33,8 @@ class Routes {
   static const String profileScreen = '/profile-screen';
   static const String cartScreen = '/cart-screen';
   static const String checkoutScreen = '/checkout-screen';
+  static const String historyScreen = '/history-screen';
+  static const String ordersScreen = '/orders-screen';
   static const String searchScreen = '/search-screen';
   static const all = <String>{
     splashScreen,
@@ -41,6 +45,8 @@ class Routes {
     profileScreen,
     cartScreen,
     checkoutScreen,
+    historyScreen,
+    ordersScreen,
     searchScreen,
   };
 }
@@ -57,6 +63,8 @@ class AppRouter extends RouterBase {
     RouteDef(Routes.profileScreen, page: ProfileScreen),
     RouteDef(Routes.cartScreen, page: CartScreen),
     RouteDef(Routes.checkoutScreen, page: CheckoutScreen),
+    RouteDef(Routes.historyScreen, page: HistoryScreen),
+    RouteDef(Routes.ordersScreen, page: OrdersScreen),
     RouteDef(Routes.searchScreen, page: SearchScreen),
   ];
   @override
@@ -122,6 +130,18 @@ class AppRouter extends RouterBase {
           cartItems: args.cartItems,
           stage: args.stage,
         ),
+        settings: data,
+      );
+    },
+    HistoryScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const HistoryScreen(),
+        settings: data,
+      );
+    },
+    OrdersScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const OrdersScreen(),
         settings: data,
       );
     },

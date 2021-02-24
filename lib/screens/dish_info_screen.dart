@@ -31,6 +31,7 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.blue300,
+      appBar: _buildAppBar(context),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -38,7 +39,6 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
           ),
           child: Column(
             children: [
-              _buildUpperRow(),
               ..._buildDishImagePageView(size),
               SizedBox(height: Sizes.SIZE_20),
               Text(
@@ -66,24 +66,33 @@ class _DishInfoScreenState extends State<DishInfoScreen> {
     );
   }
 
-  Padding _buildUpperRow() => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: Sizes.SIZE_30,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: _goBack,
-              icon: Icon(Icons.keyboard_arrow_left),
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: AppColors.blue200,
+      brightness: Brightness.light,
+      automaticallyImplyLeading: false,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+            onPressed: _goBack,
+            icon: Icon(
+              Icons.keyboard_arrow_left,
+              color: Colors.black,
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.favorite_border),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.favorite_border,
+              color: Colors.black,
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
+  }
 
   List<Widget> _buildDishImagePageView(Size size) => [
         Container(
