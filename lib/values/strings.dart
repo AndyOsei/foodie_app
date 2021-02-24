@@ -84,6 +84,10 @@ class StringConst {
   // history
   static const String HISTORY = 'History';
   static const String NO_HISTORY_YET = 'No history yet';
+
+  // orders
+  static const String NO_ORDERS_YET = 'No orders yet';
+
   static const String START_ORDERING = 'Start ordering';
   static const String CREATE_ORDER_INST =
       'Hit the orange button down below to Create an order';

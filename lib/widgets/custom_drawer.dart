@@ -147,9 +147,9 @@ class MyDrawer extends StatelessWidget {
 
   final VoidCallback close;
 
-  void _navigateToProfilePage() {
+  void _navigateToPage(String screen) {
     Future.delayed(Duration(milliseconds: 250), close);
-    ExtendedNavigator.root.push(Routes.profileScreen);
+    ExtendedNavigator.root.push(screen);
   }
 
   @override
@@ -177,13 +177,17 @@ class MyDrawer extends StatelessWidget {
               children: [
                 SizedBox(height: size.height / 12),
                 ListTile(
-                  onTap: _navigateToProfilePage,
+                  onTap: () {
+                    _navigateToPage(Routes.profileScreen);
+                  },
                   leading: CustomIcon(name: 'user'),
                   title: Text(StringConst.PROFILE),
                 ),
                 const Divider(),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    _navigateToPage(Routes.ordersScreen);
+                  },
                   leading: CustomIcon(name: 'buy'),
                   title: Text(StringConst.ORDERS),
                 ),

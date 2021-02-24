@@ -52,7 +52,7 @@ class HistoryScreen extends StatelessWidget {
               child: RoundedButton(
                 width: MediaQuery.of(context).size.width / 2,
                 height: Sizes.SIZE_60,
-                onPressed: () {},
+                onPressed: _goBack,
                 label: StringConst.START_ORDERING,
               ),
             ),
