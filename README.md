@@ -1,16 +1,15 @@
-# foodie_app
+# FOODIE APP UI KIT
 
-A new Flutter project.
+A Food Delivery App UI KIT built with flutter.
 
-## Getting Started
+![Foodie](assets/shots/foodie1.jpg)
 
-This project is a starting point for a Flutter application.
+Find actual designs in the [figma community](https://www.figma.com/community/file/893381127703378146/Food-delivery-app-Ui-kit) designed by: @marvisdosa
 
-A few resources to get you started if this is your first Flutter project:
+### Contributions
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+If you face an issue or have any contributions, you can open an issue or reach out to me at @andyosei36@gmail.com. Do follow me on [twitter](https://twitter.com/andyosei36).
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### License
+
+MIT, see [LICENSE.md](https://https://github.com/AndyOsei/foodie_app/blob/master/LICENSE.md) for details.
