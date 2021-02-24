@@ -12,4 +12,4 @@ If you face an issue or have any contributions, you can open an issue or reach o
 
 ### License
 
-MIT, see [LICENSE.md](https://https://github.com/AndyOsei/foodie_app/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE.md](https://github.com/AndyOsei/foodie_app/blob/master/LICENSE.md) for details.

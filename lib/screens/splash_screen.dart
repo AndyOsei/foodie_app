@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width - Sizes.SIZE_120;
+    double size = MediaQuery.of(context).size.width / 2 + 50;
 
     return Stack(
       fit: StackFit.expand,
@@ -54,24 +54,23 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                Positioned(
-                  top: -30,
-                  left: 10,
+                Align(
+                  alignment: Alignment(0.0, 0.0),
                   child: Image.asset(
                     ImagePath.BELLA_OLONJE_LOGO,
                   ),
                 ),
-                Positioned(
-                  top: size / 2 + 10,
-                  left: size / 3,
+                Align(
+                  alignment: Alignment(0.0, 0.3),
                   child: Text(
                     StringConst.FOOD_FOR_EVERYONE,
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.subtitle2.copyWith(
+                          color: AppColors.red200,
+                        ),
                   ),
                 ),
-                Positioned(
-                  bottom: size / 6,
-                  right: size / 2 - 20,
+                Align(
+                  alignment: Alignment(0.0, 0.8),
                   child: CircularProgressIndicator(),
                 )
               ],
