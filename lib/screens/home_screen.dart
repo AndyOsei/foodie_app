@@ -280,6 +280,7 @@ class _HomePageState extends State<HomePage> {
 
   FractionallySizedBox _buildSearchButton(BuildContext context) {
     return FractionallySizedBox(
+      widthFactor: 0.9,
       child: GestureDetector(
         onTap: _navigateToSearchPage,
         child: Container(
