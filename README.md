@@ -18,10 +18,6 @@ designed by: @marvisdosa
   flutter run
   ```
 
-### DEMO
-
-![Demo](assets/shots/foodie_app.mov)
-
 ### Contributions
 
 If you face an issue or have any contributions, you can open an issue or reach out to me at @andyosei36@gmail.com. Do follow me on [twitter](https://twitter.com/andyosei36).
