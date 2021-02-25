@@ -47,7 +47,10 @@ class GetStartedScreen extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: Sizes.SIZE_8),
+        padding: EdgeInsets.only(
+            bottom: Theme.of(context).platform == TargetPlatform.android
+                ? Sizes.SIZE_20
+                : 0),
         child: RoundedButton(
           onPressed: _navigateToAuthPage,
           width: MediaQuery.of(context).size.width - Sizes.SIZE_150,

@@ -148,64 +148,72 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     return Scaffold(
       backgroundColor: AppColors.blue200,
       appBar: _buildAppBar(context),
-      body: Padding(
-        padding: const EdgeInsets.all(Sizes.SIZE_30),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.stage,
-              style: textTheme.headline4.copyWith(
-                fontFamily: StringConst.SF_PRO_TEXT,
-                fontSize: Sizes.TEXT_SIZE_34,
-                color: Colors.black,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: 20,
+            left: 30,
+            right: 30,
+            bottom:
+                Theme.of(context).platform == TargetPlatform.android ? 16 : 0,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.stage,
+                style: textTheme.headline4.copyWith(
+                  fontFamily: StringConst.SF_PRO_TEXT,
+                  fontSize: Sizes.TEXT_SIZE_34,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            Spacer(),
-            ..._buildStageContent(textTheme),
-            Spacer(),
-            Text(
-              StringConst.DELIVERY_METHOD,
-              style: textTheme.headline4.copyWith(
-                fontFamily: StringConst.SF_PRO_TEXT,
-                fontSize: Sizes.TEXT_SIZE_17,
-                color: Colors.black,
+              SizedBox(height: Sizes.SIZE_20),
+              ..._buildStageContent(textTheme),
+              Spacer(),
+              Text(
+                StringConst.DELIVERY_METHOD,
+                style: textTheme.headline4.copyWith(
+                  fontFamily: StringConst.SF_PRO_TEXT,
+                  fontSize: Sizes.TEXT_SIZE_17,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            SizedBox(height: Sizes.SIZE_16),
-            RadioGroup(
-              children: [
-                for (String deliveryMethod in _deliverymethods)
-                  RadioListTile<String>(
-                    onChanged: _onDeliveryMethodRadioChanged,
-                    groupValue: _selectedDeliveryMethod,
-                    value: deliveryMethod,
-                    title: Text(
-                      '${deliveryMethod}',
-                      style: textTheme.bodyText2.copyWith(
-                        fontFamily: StringConst.SF_PRO_TEXT,
+              SizedBox(height: Sizes.SIZE_8),
+              RadioGroup(
+                children: [
+                  for (String deliveryMethod in _deliverymethods)
+                    RadioListTile<String>(
+                      onChanged: _onDeliveryMethodRadioChanged,
+                      groupValue: _selectedDeliveryMethod,
+                      value: deliveryMethod,
+                      title: Text(
+                        '${deliveryMethod}',
+                        style: textTheme.bodyText2.copyWith(
+                          fontFamily: StringConst.SF_PRO_TEXT,
+                        ),
                       ),
                     ),
+                ],
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(StringConst.TOTAL, style: textTheme.bodyText2),
+                  Text(
+                    '${toMoney(_order.total)}',
+                    style: textTheme.headline4.copyWith(
+                      fontFamily: StringConst.SF_PRO_TEXT,
+                      color: Colors.black,
+                    ),
                   ),
-              ],
-            ),
-            Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(StringConst.TOTAL, style: textTheme.bodyText2),
-                Text(
-                  '${toMoney(_order.total)}',
-                  style: textTheme.headline4.copyWith(
-                    fontFamily: StringConst.SF_PRO_TEXT,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-            Spacer(),
-            _buildBottomButton(context),
-          ],
+                ],
+              ),
+              Spacer(),
+              _buildBottomButton(context),
+            ],
+          ),
         ),
       ),
     );
@@ -274,7 +282,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 horizontal: Sizes.SIZE_20,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(Sizes.SIZE_30),
               ),
               textStyle: textTheme.bodyText1.copyWith(
                 fontFamily: StringConst.POPPINS,
@@ -328,14 +336,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     return Align(
       alignment: Alignment.bottomCenter,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: Sizes.SIZE_16),
-        child: RoundedButton(
-          onPressed: onPressed,
-          label: label,
-          width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
-          height: Sizes.SIZE_60,
-        ),
+      child: RoundedButton(
+        onPressed: onPressed,
+        label: label,
+        width: MediaQuery.of(context).size.width - Sizes.SIZE_150,
+        height: Sizes.SIZE_60,
       ),
     );
   }
@@ -404,7 +409,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       SizedBox(height: Sizes.SIZE_8),
       InfoCard(
         child: Padding(
-          padding: const EdgeInsets.all(Sizes.SIZE_30),
+          padding: const EdgeInsets.all(Sizes.SIZE_20),
           child: Form(
             key: _formKey,
             child: Column(

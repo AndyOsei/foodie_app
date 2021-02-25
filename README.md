@@ -4,7 +4,8 @@ A Food Delivery App UI KIT built with flutter.
 
 ![Foodie](assets/shots/foodie1.jpg)
 
-Find actual designs in the [figma community](https://www.figma.com/community/file/893381127703378146/Food-delivery-app-Ui-kit) designed by: @marvisdosa
+Find actual designs in the [figma community](https://www.figma.com/community/file/893381127703378146/Food-delivery-app-Ui-kit).
+designed by: @marvisdosa
 
 ### SETUP
 

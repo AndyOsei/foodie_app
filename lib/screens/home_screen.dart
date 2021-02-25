@@ -280,7 +280,6 @@ class _HomePageState extends State<HomePage> {
 
   FractionallySizedBox _buildSearchButton(BuildContext context) {
     return FractionallySizedBox(
-      widthFactor: 0.9,
       child: GestureDetector(
         onTap: _navigateToSearchPage,
         child: Container(
@@ -294,7 +293,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Row(
             children: [
-              CustomIcon(name: 'search', size: 24),
+              CustomIcon(name: 'search', size: Sizes.SIZE_24),
               Padding(
                 padding: const EdgeInsets.only(left: Sizes.SIZE_16),
                 child: Text(

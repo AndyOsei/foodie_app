@@ -23,6 +23,7 @@ class RadioGroup extends StatelessWidget {
                 const Divider(
                   color: AppColors.gray200,
                   indent: Sizes.SIZE_20,
+                  height: Sizes.SIZE_0,
                 ),
               ] else
                 children[i]

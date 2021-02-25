@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:foodie_app/routes/router.gr.dart';
 import 'package:foodie_app/values/values.dart';
 import 'package:foodie_app/widgets/custom_icon.dart';
 import 'package:foodie_app/widgets/rounded_button.dart';
