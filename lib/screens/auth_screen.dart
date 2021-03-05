@@ -182,12 +182,12 @@ class AuthScreen extends StatelessWidget {
               obscureText: true,
               obscuringCharacter: StringConst.AETERISKS,
               decoration: InputDecoration(
-                hintStyle: _textTheme.bodyText1.copyWith(
+                labelStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
                   fontSize: Sizes.TEXT_SIZE_15,
                 ),
-                hintText: StringConst.CONFIRM_PASSWORD,
+                labelText: StringConst.CONFIRM_PASSWORD,
               ),
             ),
             Spacer(flex: 3),

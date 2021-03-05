@@ -17,31 +17,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<Profile>(
-          create: (_) => Profile(
-            name: 'Marvis Ighedosa',
-            email: 'dosamarvis@gmail.com',
-            address:
-                'No 15 uti street off ovie palace road effurun delta state',
-            mobile: '+234 9011039271',
-          ),
-        ),
-        ChangeNotifierProvider<Cart>(
-          create: (_) => Cart(),
-        ),
-        ChangeNotifierProvider<Orders>(
-          create: (_) => Orders(),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: StringConst.APP_NAME,
-        theme: AppTheme.themeData,
-        builder: ExtendedNavigator.builder<AppRouter>(
-          router: AppRouter(),
-          initialRoute: Routes.splashScreen,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: StringConst.APP_NAME,
+      theme: AppTheme.themeData,
+      onGenerateRoute: AppRouter(),
+      builder: ExtendedNavigator.builder<AppRouter>(
+        router: AppRouter(),
+        initialRoute: Routes.splashScreen,
+        builder: (context, extendedNav) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider<Profile>(
+              create: (_) => Profile(
+                name: 'Marvis Ighedosa',
+                email: 'dosamarvis@gmail.com',
+                address:
+                    'No 15 uti street off ovie palace road effurun delta state',
+                mobile: '+234 9011039271',
+              ),
+            ),
+            ChangeNotifierProvider<Cart>(
+              create: (_) => Cart(),
+            ),
+            ChangeNotifierProvider<Orders>(
+              create: (_) => Orders(),
+            ),
+          ],
+          child: extendedNav,
         ),
       ),
     );
