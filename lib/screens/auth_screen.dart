@@ -98,12 +98,12 @@ class AuthScreen extends StatelessWidget {
             Spacer(flex: 1),
             TextField(
               decoration: InputDecoration(
-                hintStyle: _textTheme.bodyText1.copyWith(
+                labelStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
                   fontSize: Sizes.TEXT_SIZE_15,
                 ),
-                hintText: StringConst.EMAIL_ADDRESS,
+                labelText: StringConst.EMAIL_ADDRESS,
               ),
             ),
             Spacer(flex: 1),
@@ -111,12 +111,12 @@ class AuthScreen extends StatelessWidget {
               obscureText: true,
               obscuringCharacter: StringConst.AETERISKS,
               decoration: InputDecoration(
-                hintStyle: _textTheme.bodyText1.copyWith(
+                labelStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
                   fontSize: Sizes.TEXT_SIZE_15,
                 ),
-                hintText: StringConst.PASSWORD,
+                labelText: StringConst.PASSWORD,
               ),
             ),
             Spacer(flex: 1),
@@ -156,12 +156,12 @@ class AuthScreen extends StatelessWidget {
             Spacer(flex: 1),
             TextField(
               decoration: InputDecoration(
-                hintStyle: _textTheme.bodyText1.copyWith(
+                labelStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
                   fontSize: Sizes.TEXT_SIZE_15,
                 ),
-                hintText: StringConst.EMAIL_ADDRESS,
+                labelText: StringConst.EMAIL_ADDRESS,
               ),
             ),
             Spacer(flex: 1),
@@ -169,12 +169,12 @@ class AuthScreen extends StatelessWidget {
               obscureText: true,
               obscuringCharacter: StringConst.AETERISKS,
               decoration: InputDecoration(
-                hintStyle: _textTheme.bodyText1.copyWith(
+                labelStyle: _textTheme.bodyText1.copyWith(
                   fontFamily: StringConst.SF_PRO_TEXT,
                   color: AppColors.black50,
                   fontSize: Sizes.TEXT_SIZE_15,
                 ),
-                hintText: StringConst.PASSWORD,
+                labelText: StringConst.PASSWORD,
               ),
             ),
             Spacer(flex: 1),
